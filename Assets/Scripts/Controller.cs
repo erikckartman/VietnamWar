@@ -4,17 +4,21 @@ using UnityEngine;
 
 public class GameController : MonoBehaviour
 {
+    //Movement
     private float moveSpeed = 5f;
     private float lookSensitivity = 2f;
 
+    //Aiming
     [SerializeField] private Transform cameraTransform;
     private float xRotation = 0f;
-    
-    private Rigidbody rb;
+
+    //Shooting
+    [SerializeField] private GameObject bullet;
+    [SerializeField] private Transform dulo;
+
 
     private void Start()
     {
-        rb = GetComponent<Rigidbody>();
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
     }
@@ -23,9 +27,14 @@ public class GameController : MonoBehaviour
     {
         MovePlayer();
         RotateView();
+
+        if (Input.GetMouseButtonDown(0))
+        {
+            Shoot();
+        }
     }
 
-    void MovePlayer()
+    private void MovePlayer()
     {
         float moveX = Input.GetAxis("Horizontal");
         float moveZ = Input.GetAxis("Vertical");
@@ -34,7 +43,7 @@ public class GameController : MonoBehaviour
         transform.position += move;
     }
 
-    void RotateView()
+    private void RotateView()
     {
         float mouseX = Input.GetAxis("Mouse X") * lookSensitivity;
         float mouseY = Input.GetAxis("Mouse Y") * lookSensitivity;
@@ -44,5 +53,13 @@ public class GameController : MonoBehaviour
 
         cameraTransform.localRotation = Quaternion.Euler(xRotation, 0f, 0f);
         transform.Rotate(Vector3.up * mouseX);
+    }
+
+    private void Shoot()
+    {
+        GameObject bulletClone = Instantiate(bullet, dulo.position, dulo.rotation);
+        Rigidbody bulletRB = bulletClone.GetComponent<Rigidbody>();
+        bulletRB.velocity = dulo.forward * 50f;
+        Destroy(bulletClone, 5f);
     }
 }
