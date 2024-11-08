@@ -4,18 +4,23 @@ using UnityEngine;
 
 public class GameController : MonoBehaviour
 {
-    //Movement
+    // Movement
     private float moveSpeed = 5f;
     private float lookSensitivity = 2f;
 
-    //Aiming
+    // Aiming
     [SerializeField] private Transform cameraTransform;
     private float xRotation = 0f;
 
-    //Shooting
+    // Shooting
     [SerializeField] private GameObject bullet;
     [SerializeField] private Transform dulo;
+    private int bullets = 10;
+    [SerializeField] private float fireRate = 0.1f; 
+    private bool canShoot = true;
 
+    // Recoil
+    [SerializeField] private float recoilAmount = 3f; 
 
     private void Start()
     {
@@ -28,9 +33,14 @@ public class GameController : MonoBehaviour
         MovePlayer();
         RotateView();
 
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButton(0) && bullets > 0 && canShoot)
         {
-            Shoot();
+            StartCoroutine(Shoot());
+        }
+
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            bullets = 10;
         }
     }
 
@@ -55,11 +65,21 @@ public class GameController : MonoBehaviour
         transform.Rotate(Vector3.up * mouseX);
     }
 
-    private void Shoot()
+    private IEnumerator Shoot()
     {
+        canShoot = false; 
+        bullets--;
+
         GameObject bulletClone = Instantiate(bullet, dulo.position, dulo.rotation);
         Rigidbody bulletRB = bulletClone.GetComponent<Rigidbody>();
         bulletRB.velocity = dulo.forward * 50f;
-        Destroy(bulletClone, 5f);
+        Destroy(bulletClone, 0.5f);
+
+        xRotation -= recoilAmount;
+        xRotation = Mathf.Clamp(xRotation, -90f, 90f);
+        cameraTransform.localRotation = Quaternion.Euler(xRotation, 0f, 0f);
+
+        yield return new WaitForSeconds(fireRate);
+        canShoot = true;
     }
 }
