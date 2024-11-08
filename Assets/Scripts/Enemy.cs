@@ -27,6 +27,14 @@ public class Enemy : MonoBehaviour
     private float dodgeSpeed = 3f;
     private float dodgeDistance = 2f;
 
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("Bullet"))
+        {
+            Destroy(gameObject);
+        }
+    }
+
     private void Update()
     {
         switch (state)
@@ -75,7 +83,8 @@ public class Enemy : MonoBehaviour
 
         if (ShouldDodge())
         {
-            Dodge();
+            //Dodge();
+            return;
         }
         else
         {
