@@ -7,32 +7,34 @@ using static UnityEditor.Progress;
 public class InventoryUI : MonoBehaviour
 {
     [SerializeField] private Inventory inventory;
-    [SerializeField] private RectTransform slotsParent; // Використовуємо RectTransform для позиціонування
+    [SerializeField] private RectTransform slotsParent;
     [SerializeField] private GameObject inventoryUI;
     [SerializeField] private GameObject slotPrefab;
 
-    [SerializeField] private int rows = 8; // Кількість рядків
-    [SerializeField] private int columns = 12; // Кількість колонок
-    [SerializeField] private float slotSpacing = 10f; // Відступ між слотами
+    [SerializeField] private int rows = 8;
+    [SerializeField] private int columns = 12;
+    [SerializeField] private float slotSpacing = 10f;
 
-    private GameObject[,] slots; // Двовимірний масив для збереження слотів
+    private GameObject[,] slots;
 
-    private void Start()
+    private void Awake()
     {
         GenerateSlots();
-        PopulateSlots();
     }
 
     private void Update()
     {
-        if (Input.GetKeyUp(KeyCode.E))
+        if (Input.GetKeyUp(KeyCode.Q))
         {
             bool openInventor = !inventoryUI.activeSelf;
             inventoryUI.SetActive(openInventor);
 
             Cursor.lockState = openInventor ? CursorLockMode.None : CursorLockMode.Locked;
             Cursor.visible = openInventor;
+            
         }
+
+        PopulateSlots();
     }
 
     private void GenerateSlots()
@@ -42,7 +44,6 @@ public class InventoryUI : MonoBehaviour
         float slotWidth = slotPrefab.GetComponent<RectTransform>().sizeDelta.x + slotSpacing;
         float slotHeight = slotPrefab.GetComponent<RectTransform>().sizeDelta.y + slotSpacing;
 
-        // Центруємо сітку відносно батьківського об'єкта
         Vector2 startPosition = new Vector2(
             -(columns * slotWidth) / 2 + slotWidth / 2,
             (rows * slotHeight) / 2 - slotHeight / 2
@@ -52,18 +53,14 @@ public class InventoryUI : MonoBehaviour
         {
             for (int col = 0; col < columns; col++)
             {
-                // Розрахунок позиції кожного слота
                 Vector2 slotPosition = startPosition + new Vector2(col * slotWidth, -row * slotHeight);
 
-                // Створення слота
                 GameObject slot = Instantiate(slotPrefab, slotsParent);
                 slot.GetComponent<RectTransform>().anchoredPosition = slotPosition;
                 slot.name = $"Slot_{row}_{col}";
 
-                // Збереження слота у масив
                 slots[row, col] = slot;
 
-                // Вимикаємо іконку за замовчуванням
                 Transform iconTransform = slot.transform.Find("Icon");
                 if (iconTransform != null)
                 {
@@ -84,20 +81,31 @@ public class InventoryUI : MonoBehaviour
                 GameObject slot = slots[row, col];
                 Transform iconTransform = slot.transform.Find("Icon");
 
-                if (index < inventory.items.Count) // Якщо є предмет
+                if (index < inventory.items.Count)
                 {
                     Items item = inventory.items[index];
                     if (iconTransform != null)
                     {
                         Image slotImage = iconTransform.GetComponent<Image>();
                         slotImage.sprite = item.itemIcon;
-                        slotImage.enabled = true; // Увімкнути іконку
+                        slotImage.enabled = true;
+                        Button button = iconTransform.GetComponent<Button>();
+                        if (button != null)
+                        {
+                            int capturedIndex = index;
+                            button.onClick.RemoveAllListeners();
+                            button.onClick.AddListener(() =>
+                            {
+                                Debug.Log("Button works");
+                                inventory.RemoveItem(item);
+                            });
+                        }
                     }
                     index++;
                 }
-                else if (iconTransform != null) // Якщо предмету немає
+                else if (iconTransform != null)
                 {
-                    iconTransform.GetComponent<Image>().enabled = false; // Вимкнути іконку
+                    iconTransform.GetComponent<Image>().enabled = false;
                 }
             }
         }

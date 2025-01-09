@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using UnityEngine;
@@ -7,17 +7,29 @@ using static UnityEditor.Progress;
 public class Inventory : MonoBehaviour
 {
     public List<Items> items = new List<Items>();
-    [SerializeField] private Items item;
+    [SerializeField] private int maxInventorySize = 16;
 
     private void Update()
     {
-        if (Input.GetKey(KeyCode.E))
+        if (Input.GetKeyDown(KeyCode.E))
         {
-            AddItem(item);
+            TryPickUpItem();
         }
-        if (Input.GetKey(KeyCode.Q))
+    }
+
+    private void TryPickUpItem()
+    {
+        Collider[] hitColliders = Physics.OverlapSphere(transform.position, 2f);
+
+        foreach (Collider hit in hitColliders)
         {
-            RemoveItem(item);
+            ItemPickup itemPickup = hit.GetComponent<ItemPickup>();
+            if (itemPickup != null && items.Count < maxInventorySize)
+            {
+                AddItem(itemPickup.item);
+                Destroy(hit.gameObject); 
+                break;
+            }
         }
     }
 
@@ -33,6 +45,7 @@ public class Inventory : MonoBehaviour
     {
         if (items.Contains(itemToRemove))
         {
+            Instantiate(itemToRemove.itemObject, transform.position, Quaternion.identity);
             items.Remove(itemToRemove);
         }
     }
