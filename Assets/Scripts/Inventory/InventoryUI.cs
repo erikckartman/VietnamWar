@@ -31,7 +31,7 @@ public class InventoryUI : MonoBehaviour
 
             Cursor.lockState = openInventor ? CursorLockMode.None : CursorLockMode.Locked;
             Cursor.visible = openInventor;
-            
+
         }
 
         PopulateSlots();
