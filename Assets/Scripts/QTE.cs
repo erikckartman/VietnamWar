@@ -28,21 +28,29 @@ public class QTE : MonoBehaviour
                 timerText.text = "Time: " + Mathf.Round(currentTime).ToString();
             }
 
-            if (Input.GetKeyDown(qteSequence[currentStep]))
+            if (Input.anyKeyDown)
             {
-                currentStep++;
-                currentTime = qteDuration;
-
-                if (currentStep >= qteSequence.Length)
+                if (Input.GetKeyDown(qteSequence[currentStep]))
                 {
-                    qteActive = false;
-                    SuccessQTE();
+                    currentStep++;
+                    currentTime = qteDuration;
+
+                    if (currentStep >= qteSequence.Length)
+                    {
+                        qteActive = false;
+                        SuccessQTE();
+                    }
+                    else
+                    {
+                        qteText.text = qteSequence[currentStep].ToString();
+                    }
                 }
                 else
                 {
-                    qteText.text = qteSequence[currentStep].ToString();
+                    qteActive = false;
+                    FailQTE();
                 }
-            }
+            }            
 
             if (currentTime <= 0)
             {
@@ -88,12 +96,14 @@ public class QTE : MonoBehaviour
 
     private void SuccessQTE()
     {
+        currentStep = 0;
         TurnUI(false);
         Debug.Log("Success!");
     }
 
     private void FailQTE()
     {
+        currentStep = 0;
         TurnUI(false);
         Debug.Log("Fail!");
     }

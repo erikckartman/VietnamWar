@@ -13,9 +13,9 @@ GameObject:
   - component: {fileID: 4572983369192380212}
   - component: {fileID: 1359265360324603212}
   - component: {fileID: 3003696408483182586}
-  - component: {fileID: 3849725147876599976}
+  - component: {fileID: 9058333147472141456}
   m_Layer: 0
-  m_Name: Key
+  m_Name: Key3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -43,7 +43,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5404896165836608282}
-  m_Mesh: {fileID: -4630301901561969474, guid: 9fbee452e9602414ba9416a5e2290697, type: 3}
+  m_Mesh: {fileID: 1175495934219038016, guid: a897a3ebc0960dd4ba3af7344829a7da, type: 3}
 --- !u!23 &4572983369192380212
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -64,7 +64,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: dd685b980c46a1b4c8024e07188ae21d, type: 2}
+  - {fileID: 2100000, guid: 82c012d288fbcdc46b702f7546bd715a, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -98,7 +98,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a84a3f4058da72841bde94ceb2c0a9ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  item: {fileID: 11400000, guid: b5156d1cc22d0bc4c851f92acd63bfb5, type: 2}
+  item: {fileID: 11400000, guid: 9226c2f26514d4c42b8a124227f34638, type: 2}
 --- !u!54 &3003696408483182586
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -126,7 +126,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!65 &3849725147876599976
+--- !u!65 &9058333147472141456
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -145,5 +145,5 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.0015144199, y: 0.000115409995, z: 0.00326353}
-  m_Center: {x: -0.000017538958, y: 0.000057703477, z: -0.0012289825}
+  m_Size: {x: 0.0015833294, y: 0.000120209996, z: 0.0034184102}
+  m_Center: {x: -0.000034570694, y: 0.0000058351197, z: -0.001706009}
