@@ -96,8 +96,17 @@ public class InventoryUI : MonoBehaviour
                             button.onClick.RemoveAllListeners();
                             button.onClick.AddListener(() =>
                             {
-                                Debug.Log("Button works");
-                                inventory.RemoveItem(item);
+                                if (Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift))
+                                {
+                                    Debug.Log($"Dropping item: {item.itemName}");
+                                    inventory.RemoveItem(item); // Викинути предмет
+                                }
+                                else
+                                {
+                                    Debug.Log($"Selecting item: {item.itemName}");
+                                    inventory.SelectItem(item); // Вибрати предмет
+                                }
+
                             });
                         }
                     }

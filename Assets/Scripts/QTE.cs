@@ -1,6 +1,7 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.UI;
 
 public class QTE : MonoBehaviour
@@ -12,15 +13,24 @@ public class QTE : MonoBehaviour
     private float currentTime;
 
     private bool qteActive = false;
+    private bool inputLocked = false;
 
     private int currentStep = 0;
 
     [SerializeField] private KeyCode[] qteSequence;
 
+    [HideInInspector]public UnityEvent OnQTESuccess;
+
     private void Update()
     {
         if (qteActive)
         {
+            if (inputLocked)
+            {
+                inputLocked = false;
+                return;
+            }
+
             currentTime -= Time.deltaTime;
 
             if(timerText != null)
@@ -52,7 +62,7 @@ public class QTE : MonoBehaviour
                 }
             }            
 
-            if (currentTime <= 0)
+            if (currentTime < 0)
             {
                 qteActive = false;
                 FailQTE();
@@ -75,6 +85,7 @@ public class QTE : MonoBehaviour
 
         currentTime = qteDuration;
         qteActive = true;
+        inputLocked = true;
     }
 
     private KeyCode RandomKey()
@@ -99,6 +110,7 @@ public class QTE : MonoBehaviour
         currentStep = 0;
         TurnUI(false);
         Debug.Log("Success!");
+        OnQTESuccess?.Invoke();
     }
 
     private void FailQTE()

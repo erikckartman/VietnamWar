@@ -7,6 +7,7 @@ using static UnityEditor.Progress;
 public class Inventory : MonoBehaviour
 {
     public List<Items> items = new List<Items>();
+    public Items activeItem;
     [SerializeField] private int maxInventorySize = 16;
 
     private void Update()
@@ -19,7 +20,7 @@ public class Inventory : MonoBehaviour
 
     private void TryPickUpItem()
     {
-        Collider[] hitColliders = Physics.OverlapSphere(transform.position, 2f);
+        Collider[] hitColliders = Physics.OverlapSphere(transform.position, 3f);
 
         foreach (Collider hit in hitColliders)
         {
@@ -41,12 +42,25 @@ public class Inventory : MonoBehaviour
         }
     }
 
+    public void SelectItem(Items selectedItem)
+    {
+        if (items.Contains(selectedItem))
+        {
+            activeItem = selectedItem;
+        }
+    }
+
     public void RemoveItem(Items itemToRemove)
     {
         if (items.Contains(itemToRemove))
         {
             Instantiate(itemToRemove.itemObject, transform.position, Quaternion.identity);
             items.Remove(itemToRemove);
+
+            if(activeItem == itemToRemove)
+            {
+                activeItem = null;
+            }
         }
     }
 }

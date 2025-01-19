@@ -8,9 +8,6 @@ public class MazesPlayerScript : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyUp(KeyCode.Space))
-        {
-            qteScript.StartQTE();
-        }
+        
     }
 }
