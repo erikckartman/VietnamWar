@@ -16,3 +16,4 @@ MonoBehaviour:
   itemID: 2
   itemIcon: {fileID: 21300000, guid: 0353924c4a4c1d24c844b914513fc047, type: 3}
   itemObject: {fileID: 5404896165836608282, guid: 575a685e05e67604bbdf6b9f681731ef, type: 3}
+  onSceneScale: {x: 0.01, y: 0.01, z: 0.01}

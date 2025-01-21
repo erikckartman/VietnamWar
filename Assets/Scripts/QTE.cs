@@ -7,7 +7,6 @@ using UnityEngine.UI;
 public class QTE : MonoBehaviour
 {
     [SerializeField] private Text qteText;
-    [SerializeField] private Text timerText;
 
     private float qteDuration = 2f;
     private float currentTime;
@@ -32,11 +31,6 @@ public class QTE : MonoBehaviour
             }
 
             currentTime -= Time.deltaTime;
-
-            if(timerText != null)
-            {
-                timerText.text = "Time: " + Mathf.Round(currentTime).ToString();
-            }
 
             if (Input.anyKeyDown)
             {
@@ -72,7 +66,6 @@ public class QTE : MonoBehaviour
 
     public void TurnUI(bool active)
     {
-        timerText.GetComponent<Text>().enabled = active;
         qteText.GetComponent<Text>().enabled = active;
     }
 

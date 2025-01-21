@@ -54,7 +54,8 @@ public class Inventory : MonoBehaviour
     {
         if (items.Contains(itemToRemove))
         {
-            Instantiate(itemToRemove.itemObject, transform.position, Quaternion.identity);
+            GameObject removeItem = Instantiate(itemToRemove.itemObject, transform.position, Quaternion.identity);
+            removeItem.transform.localScale = itemToRemove.onSceneScale;
             items.Remove(itemToRemove);
 
             if(activeItem == itemToRemove)

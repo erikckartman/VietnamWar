@@ -9,4 +9,5 @@ public class Items : ScriptableObject
     public int itemID;
     public Sprite itemIcon;
     public GameObject itemObject;
+    public Vector3 onSceneScale;
 }
