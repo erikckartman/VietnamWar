@@ -957,8 +957,37 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: -516098083770646512, guid: 0670bd454f625734e8cb780c8af49582, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 237523113}
   m_SourcePrefab: {fileID: 100100000, guid: 0670bd454f625734e8cb780c8af49582, type: 3}
+--- !u!1 &237523112 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -516098083770646512, guid: 0670bd454f625734e8cb780c8af49582, type: 3}
+  m_PrefabInstance: {fileID: 237523111}
+  m_PrefabAsset: {fileID: 0}
+--- !u!65 &237523113
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 237523112}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.03599593, y: 0.08744623, z: 0.05888547}
+  m_Center: {x: 0.00018692015, y: 0.0022052038, z: 0.008970254}
 --- !u!1 &254681892
 GameObject:
   m_ObjectHideFlags: 0
@@ -1931,7 +1960,7 @@ Transform:
   m_GameObject: {fileID: 543690662}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.2625, y: 1.533, z: 0.6161754}
+  m_LocalPosition: {x: -21.43, y: 1.533, z: 16.34}
   m_LocalScale: {x: 1.274, y: 1.274, z: 1.274}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -3296,7 +3325,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3329470969911759039, guid: 575a685e05e67604bbdf6b9f681731ef, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -3.24
+      value: -18.39
       objectReference: {fileID: 0}
     - target: {fileID: 3329470969911759039, guid: 575a685e05e67604bbdf6b9f681731ef, type: 3}
       propertyPath: m_LocalPosition.y
@@ -3304,7 +3333,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3329470969911759039, guid: 575a685e05e67604bbdf6b9f681731ef, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 2.33
+      value: 17.9
       objectReference: {fileID: 0}
     - target: {fileID: 3329470969911759039, guid: 575a685e05e67604bbdf6b9f681731ef, type: 3}
       propertyPath: m_LocalRotation.w
@@ -3637,7 +3666,7 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 20
+    m_FontSize: 14
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 1

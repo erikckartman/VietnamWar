@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class IntroScript : MonoBehaviour
 {
-    [HideInInspector] public bool canMove = false;
+    public bool canMove = false;
     [SerializeField] private GameObject intro;
     private void Start()
     {
