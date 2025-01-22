@@ -9,7 +9,7 @@ public class GameController : MonoBehaviour
     private float moveSpeed = 5f;
     private float lookSensitivity = 2f;
 
-    [SerializeField] private IntroScript introScript;
+    public bool canMove;
 
     //Looking
     [SerializeField] private Transform cameraTransform;
@@ -23,7 +23,7 @@ public class GameController : MonoBehaviour
 
     private void Update()
     {
-        if (introScript.canMove)
+        if (canMove)
         {
             MovePlayer();
             RotateView();
@@ -31,7 +31,7 @@ public class GameController : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            SceneManager.LoadSceneAsync("EndScene");
+            //SceneManager.LoadSceneAsync("EndScene");
         }
     }
 

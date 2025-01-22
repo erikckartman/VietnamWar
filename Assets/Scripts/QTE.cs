@@ -19,6 +19,7 @@ public class QTE : MonoBehaviour
     [SerializeField] private KeyCode[] qteSequence;
 
     [HideInInspector]public UnityEvent OnQTESuccess;
+    [SerializeField] private GameController controller;
 
     private void Update()
     {
@@ -75,6 +76,7 @@ public class QTE : MonoBehaviour
         qteSequence = new KeyCode[3] { RandomKey(), RandomKey(), RandomKey() };
 
         qteText.text = qteSequence[currentStep].ToString();
+        controller.canMove = false;
 
         currentTime = qteDuration;
         qteActive = true;
@@ -103,6 +105,7 @@ public class QTE : MonoBehaviour
         currentStep = 0;
         TurnUI(false);
         Debug.Log("Success!");
+        controller.canMove = true;
         OnQTESuccess?.Invoke();
     }
 
@@ -110,6 +113,7 @@ public class QTE : MonoBehaviour
     {
         currentStep = 0;
         TurnUI(false);
+        controller.canMove = true;
         Debug.Log("Fail!");
     }
 }
