@@ -10,4 +10,5 @@ public class Items : ScriptableObject
     public Sprite itemIcon;
     public GameObject itemObject;
     public Vector3 onSceneScale;
+    public string listText;
 }

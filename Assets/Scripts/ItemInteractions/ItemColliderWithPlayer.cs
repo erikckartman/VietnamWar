@@ -10,10 +10,13 @@ public class ItemColliderWithPlayer : MonoBehaviour
     [SerializeField] private Items requiredItem;
     [SerializeField]
     private UnityEvent onQTEcomplete;
+    private bool qteCompleted;
 
     
     private void Update()
     {
+        if (qteCompleted) return;
+
         Collider[] hitColliders = Physics.OverlapSphere(transform.position, 3f);
         foreach (Collider collider in hitColliders)
         {
@@ -37,5 +40,6 @@ public class ItemColliderWithPlayer : MonoBehaviour
     private void HandleQteSuccess()
     {
         onQTEcomplete.Invoke();
+        qteCompleted = true;
     }
 }

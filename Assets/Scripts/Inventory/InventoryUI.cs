@@ -17,6 +17,12 @@ public class InventoryUI : MonoBehaviour
 
     private GameObject[,] slots;
 
+
+    [Header("List objects")]
+    [SerializeField] private GameObject listSprite;
+    [SerializeField] private GameObject listText;
+    private bool listWatch = false;
+
     private void Awake()
     {
         GenerateSlots();
@@ -24,7 +30,7 @@ public class InventoryUI : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyUp(KeyCode.Q))
+        if (Input.GetKeyUp(KeyCode.Q) && !listWatch)
         {
             bool openInventor = !inventoryUI.activeSelf;
             inventoryUI.SetActive(openInventor);
@@ -34,8 +40,21 @@ public class InventoryUI : MonoBehaviour
 
         }
 
+        if(inventory.activeItem != null)
+        {
+            if (inventory.activeItem.listText != "null")
+            {
+                if (Input.GetMouseButtonDown(0))
+                {
+                    listWatch = !listWatch;
+                    ShowList();
+                }
+            }
+        }
+
         PopulateSlots();
     }
+
 
     private void GenerateSlots()
     {
@@ -118,5 +137,13 @@ public class InventoryUI : MonoBehaviour
                 }
             }
         }
+    }
+
+    private void ShowList()
+    {
+        listSprite.GetComponent<Image>().sprite = inventory.activeItem.itemIcon;
+        listText.GetComponent<Text>().text = inventory.activeItem.listText;
+        listSprite.SetActive(listWatch);
+        listText.SetActive(listWatch);
     }
 }
