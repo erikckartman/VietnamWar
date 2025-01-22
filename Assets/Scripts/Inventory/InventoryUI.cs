@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using static UnityEditor.Progress;
 
 public class InventoryUI : MonoBehaviour
 {
@@ -21,7 +20,11 @@ public class InventoryUI : MonoBehaviour
     [Header("List objects")]
     [SerializeField] private GameObject listSprite;
     [SerializeField] private GameObject listText;
+    private bool openInventor = false;
     private bool listWatch = false;
+
+    [Header("Active item elements")]
+    [SerializeField] private GameObject AOpanel;
 
     private void Awake()
     {
@@ -32,7 +35,7 @@ public class InventoryUI : MonoBehaviour
     {
         if (Input.GetKeyUp(KeyCode.Q) && !listWatch)
         {
-            bool openInventor = !inventoryUI.activeSelf;
+            openInventor = !inventoryUI.activeSelf;
             inventoryUI.SetActive(openInventor);
 
             Cursor.lockState = openInventor ? CursorLockMode.None : CursorLockMode.Locked;
@@ -44,12 +47,12 @@ public class InventoryUI : MonoBehaviour
         {
             if (inventory.activeItem.listText != "null")
             {
-                if (Input.GetMouseButtonDown(0))
+                if (Input.GetMouseButtonDown(0) && !openInventor)
                 {
                     listWatch = !listWatch;
                     ShowList();
                 }
-            }
+            }            
         }
 
         PopulateSlots();
@@ -118,12 +121,14 @@ public class InventoryUI : MonoBehaviour
                                 if (Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift))
                                 {
                                     Debug.Log($"Dropping item: {item.itemName}");
-                                    inventory.RemoveItem(item); // Викинути предмет
+                                    inventory.RemoveItem(item);
                                 }
                                 else
                                 {
+                                    AOpanel.SetActive(true);
                                     Debug.Log($"Selecting item: {item.itemName}");
-                                    inventory.SelectItem(item); // Вибрати предмет
+                                    inventory.SelectItem(item);
+                                    AOpanel.GetComponent<Image>().sprite = inventory.activeItem.itemIcon;
                                 }
 
                             });

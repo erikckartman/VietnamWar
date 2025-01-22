@@ -1,12 +1,15 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameController : MonoBehaviour
 {
     // Movement
     private float moveSpeed = 5f;
     private float lookSensitivity = 2f;
+
+    [SerializeField] private IntroScript introScript;
 
     //Looking
     [SerializeField] private Transform cameraTransform;
@@ -20,8 +23,16 @@ public class GameController : MonoBehaviour
 
     private void Update()
     {
-        MovePlayer();
-        RotateView();
+        if (introScript.canMove)
+        {
+            MovePlayer();
+            RotateView();
+        }
+
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            SceneManager.LoadSceneAsync("EndScene");
+        }
     }
 
     private void MovePlayer()
