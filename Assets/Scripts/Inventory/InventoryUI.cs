@@ -26,6 +26,8 @@ public class InventoryUI : MonoBehaviour
     [Header("Active item elements")]
     [SerializeField] private GameObject AOpanel;
 
+    [SerializeField] private GameController controller;
+
     private void Awake()
     {
         GenerateSlots();
@@ -33,7 +35,7 @@ public class InventoryUI : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyUp(KeyCode.Q) && !listWatch)
+        if (Input.GetKeyUp(KeyCode.Q) && !listWatch && controller.canMove)
         {
             openInventor = !inventoryUI.activeSelf;
             inventoryUI.SetActive(openInventor);
