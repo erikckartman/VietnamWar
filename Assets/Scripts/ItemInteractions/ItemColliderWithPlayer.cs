@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.Events;
 
 public class ItemColliderWithPlayer : MonoBehaviour
@@ -11,19 +12,20 @@ public class ItemColliderWithPlayer : MonoBehaviour
     private UnityEvent onQTEcomplete;
     private bool qteCompleted;
 
-
+    [SerializeField] private Text alert;
+    [SerializeField] private GameObject alertGO;
     private void Update()
     {
         if (qteCompleted) return;
 
-        Collider[] hitColliders = Physics.OverlapSphere(transform.position, 3f);
+        Collider[] hitColliders = Physics.OverlapSphere(transform.position, 1f);
         foreach (Collider collider in hitColliders)
         {
             if (collider.CompareTag("Player") && Input.GetKeyDown(KeyCode.E))
             {
                 if (requiredItem == null)
                 {
-                    qte.OnQTESuccess.RemoveAllListeners(); // Додаємо цю лінію
+                    qte.OnQTESuccess.RemoveAllListeners();
                     qte.OnQTESuccess.AddListener(HandleQteSuccess);
                     qte.StartQTE();
                 }
@@ -31,19 +33,29 @@ public class ItemColliderWithPlayer : MonoBehaviour
                 {
                     if (collider.GetComponent<Inventory>().activeItem == requiredItem)
                     {
-                        qte.OnQTESuccess.RemoveAllListeners(); // Додаємо цю лінію
+                        StopCoroutine(WaitToEnd());
+                        alertGO.SetActive(false);
+                        qte.OnQTESuccess.RemoveAllListeners(); 
                         qte.OnQTESuccess.AddListener(HandleQteSuccess);
                         qte.StartQTE();
                     }
                     else
                     {
                         Debug.Log($"You have to choose {requiredItem.itemName}");
+                        alert.text = "You have to choose" + requiredItem.itemName;
+                        alertGO.SetActive(true);
+                        StartCoroutine(WaitToEnd());
                     }
                 }
             }
         }
     }
 
+    private IEnumerator WaitToEnd()
+    {
+        yield return new WaitForSeconds(1);
+        alertGO.SetActive(false);
+    }
 
     private void HandleQteSuccess()
     {
