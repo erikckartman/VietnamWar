@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
@@ -11,7 +11,7 @@ public class ItemColliderWithPlayer : MonoBehaviour
     private UnityEvent onQTEcomplete;
     private bool qteCompleted;
 
-    
+
     private void Update()
     {
         if (qteCompleted) return;
@@ -21,23 +21,33 @@ public class ItemColliderWithPlayer : MonoBehaviour
         {
             if (collider.CompareTag("Player") && Input.GetKeyDown(KeyCode.E))
             {
-                if (collider.GetComponent<Inventory>().activeItem == requiredItem)
+                if (requiredItem == null)
                 {
+                    qte.OnQTESuccess.RemoveAllListeners(); // Додаємо цю лінію
                     qte.OnQTESuccess.AddListener(HandleQteSuccess);
                     qte.StartQTE();
                 }
                 else
                 {
-                    Debug.Log($"You have to choose {requiredItem.itemName}");
+                    if (collider.GetComponent<Inventory>().activeItem == requiredItem)
+                    {
+                        qte.OnQTESuccess.RemoveAllListeners(); // Додаємо цю лінію
+                        qte.OnQTESuccess.AddListener(HandleQteSuccess);
+                        qte.StartQTE();
+                    }
+                    else
+                    {
+                        Debug.Log($"You have to choose {requiredItem.itemName}");
+                    }
                 }
             }
         }
-
-
     }
+
 
     private void HandleQteSuccess()
     {
+        qte.OnQTESuccess.RemoveListener(HandleQteSuccess);
         onQTEcomplete.Invoke();
         qteCompleted = true;
     }

@@ -19,6 +19,7 @@ public class QTE : MonoBehaviour
     [SerializeField] private KeyCode[] qteSequence;
 
     [HideInInspector]public UnityEvent OnQTESuccess;
+
     [SerializeField] private GameController controller;
 
     private void Update()
@@ -73,7 +74,7 @@ public class QTE : MonoBehaviour
     public void StartQTE()
     {
         TurnUI(true);
-        qteSequence = new KeyCode[3] { RandomKey(), RandomKey(), RandomKey() };
+        qteSequence = new KeyCode[4] { RandomKey(), RandomKey(), RandomKey(), RandomKey() };
 
         qteText.text = qteSequence[currentStep].ToString();
         controller.canMove = false;
@@ -85,7 +86,7 @@ public class QTE : MonoBehaviour
 
     private KeyCode RandomKey()
     {
-        int rand = Random.Range(0, 3);
+        int rand = Random.Range(0, 6);
         
         switch (rand)
         {
@@ -95,6 +96,12 @@ public class QTE : MonoBehaviour
                 return KeyCode.S;
             case 2:
                 return KeyCode.D;
+            case 3:
+                return KeyCode.Z;
+            case 4:
+                return KeyCode.X;
+            case 5:
+                return KeyCode.C;
             default:
                 return KeyCode.Space;
         }
