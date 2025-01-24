@@ -8,6 +8,7 @@ public class IntroScript : MonoBehaviour
 {
     [SerializeField] private GameController controller;
     [SerializeField] private GameObject intro;
+    [SerializeField] private Thoughs thoughs;
 
     [Header("Intro elements")]
     [SerializeField] private Image image;
@@ -68,5 +69,6 @@ public class IntroScript : MonoBehaviour
 
         controller.canMove = true;
         Destroy(intro);
+        thoughs.ShowThought(0);
     }
 }
