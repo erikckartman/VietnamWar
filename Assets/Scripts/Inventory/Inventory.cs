@@ -8,6 +8,7 @@ public class Inventory : MonoBehaviour
     public List<Items> items = new List<Items>();
     public Items activeItem;
     [SerializeField] private int maxInventorySize = 16;
+    [SerializeField] private AudioSource pickupAudio;
 
     private void Update()
     {
@@ -26,9 +27,15 @@ public class Inventory : MonoBehaviour
             ItemPickup itemPickup = hit.GetComponent<ItemPickup>();
             if (itemPickup != null && items.Count < maxInventorySize)
             {
+                if(itemPickup.item.pickupSound != null)
+                {
+                    pickupAudio.clip = itemPickup.item.pickupSound;
+                    pickupAudio.Play();
+                }
+
                 AddItem(itemPickup.item);
-                Destroy(hit.gameObject); 
-                break;
+                Destroy(hit.gameObject);
+                break;            
             }
         }
     }

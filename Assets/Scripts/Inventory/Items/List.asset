@@ -23,3 +23,5 @@ MonoBehaviour:
     who owns the caf\xE9 \u201CMorning Lotus.\u201D It\u2019s not far from our house\u2014Bon
     surely knows where it is. I reserved the fourth table for us for tomorrow. I\u2019m
     so excited to see you all and have missed you so much!  With love, Isha"
+  pickupSound: {fileID: 8300000, guid: 0993a9045f56eb143a596b3127838d5a, type: 3}
+  thoughIndex: 2

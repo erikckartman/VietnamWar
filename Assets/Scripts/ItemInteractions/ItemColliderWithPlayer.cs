@@ -8,8 +8,8 @@ public class ItemColliderWithPlayer : MonoBehaviour
 {
     [SerializeField] private QTE qte;
     [SerializeField] private Items requiredItem;
-    [SerializeField]
-    private UnityEvent onQTEcomplete;
+    [SerializeField] private UnityEvent onQTEcomplete;
+    [SerializeField] private UnityEvent onDontHavingItem;
     private bool qteCompleted;
 
     [SerializeField] private Text alert;
@@ -42,7 +42,11 @@ public class ItemColliderWithPlayer : MonoBehaviour
                     else
                     {
                         Debug.Log($"You have to choose {requiredItem.itemName}");
-                        alert.text = "You have to choose" + requiredItem.itemName;
+                        alert.text = "You have to choose " + requiredItem.itemName;
+                        if(onDontHavingItem != null)
+                        {
+                            onDontHavingItem.Invoke();
+                        }
                         alertGO.SetActive(true);
                         StartCoroutine(WaitToEnd());
                     }

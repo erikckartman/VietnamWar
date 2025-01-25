@@ -114,6 +114,7 @@ public class QTE : MonoBehaviour
         Debug.Log("Success!");
         controller.canMove = true;
         OnQTESuccess?.Invoke();
+        qteDuration -= 0.2f;
     }
 
     private void FailQTE()

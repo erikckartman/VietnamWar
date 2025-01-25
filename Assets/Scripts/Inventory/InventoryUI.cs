@@ -9,6 +9,7 @@ public class InventoryUI : MonoBehaviour
     [SerializeField] private RectTransform slotsParent;
     [SerializeField] private GameObject inventoryUI;
     [SerializeField] private GameObject slotPrefab;
+    [SerializeField] private Thoughs thoughs;
 
     [SerializeField] private int rows = 8;
     [SerializeField] private int columns = 12;
@@ -53,6 +54,10 @@ public class InventoryUI : MonoBehaviour
                 {
                     listWatch = !listWatch;
                     ShowList();
+                    if(inventory.activeItem.thoughIndex != 0)
+                    {
+                        thoughs.ShowThought(inventory.activeItem.thoughIndex);
+                    }
                 }
             }            
         }

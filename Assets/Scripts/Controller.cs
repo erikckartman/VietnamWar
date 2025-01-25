@@ -8,6 +8,7 @@ public class GameController : MonoBehaviour
     // Movement
     private float moveSpeed = 5f;
     private float lookSensitivity = 2f;
+    [SerializeField] private AudioSource walkSound;
 
     public bool canMove;
 
@@ -42,6 +43,21 @@ public class GameController : MonoBehaviour
 
         Vector3 move = transform.right * moveX * moveSpeed * Time.deltaTime + transform.forward * moveZ * moveSpeed * Time.deltaTime;
         transform.position += move;
+
+        if (moveX == 0 && moveZ == 0)
+        {
+            if (walkSound.isPlaying)
+            {
+                walkSound.Stop();
+            }
+        }
+        else
+        {
+            if (!walkSound.isPlaying) 
+            {
+                walkSound.Play();
+            }
+        }
     }
 
     private void RotateView()

@@ -18,3 +18,5 @@ MonoBehaviour:
   itemObject: {fileID: 5404896165836608282, guid: 46f02a389e4365a4585208bc4104c585, type: 3}
   onSceneScale: {x: 0.01, y: 0.01, z: 0.01}
   listText: null
+  pickupSound: {fileID: 8300000, guid: 8f943510de05ca9478bac01131da691c, type: 3}
+  thoughIndex: 0
