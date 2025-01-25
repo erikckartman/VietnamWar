@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Sounder : MonoBehaviour
 {
@@ -17,5 +18,10 @@ public class Sounder : MonoBehaviour
             m_AudioSource.clip = clip;
             m_AudioSource.Play();
         }
+    }
+
+    public void GoToScene(string scene)
+    {
+        SceneManager.LoadScene(scene);
     }
 }

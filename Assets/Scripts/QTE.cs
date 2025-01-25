@@ -8,7 +8,7 @@ public class QTE : MonoBehaviour
 {
     [SerializeField] private Text qteText;
 
-    private float qteDuration = 2f;
+    private float qteDuration = 3f;
     private float currentTime;
 
     private bool qteActive = false;
@@ -21,6 +21,15 @@ public class QTE : MonoBehaviour
     [HideInInspector]public UnityEvent OnQTESuccess;
 
     [SerializeField] private GameController controller;
+
+    //Second QTE
+    private bool rapidPressActive = false;
+    private KeyCode rapidPressKey;
+    private int requiredPresses = 10;
+    private int currentPressCount = 0;
+    private float rapidPressDuration = 2f;
+    private float rapidPressTimer;
+
 
     private void Update()
     {
@@ -64,6 +73,32 @@ public class QTE : MonoBehaviour
                 FailQTE();
             }
         }
+
+        if (rapidPressActive)
+        {
+
+            rapidPressTimer -= Time.deltaTime;
+            if (Input.GetKeyDown(rapidPressKey))
+            {
+                TurnUI(false);
+                currentPressCount++;
+                qteText.text = rapidPressKey.ToString();
+                Debug.Log($"{rapidPressKey} : {currentPressCount}/{requiredPresses}");
+                TurnUI(true);
+
+                if (currentPressCount >= requiredPresses)
+                {
+                    rapidPressActive = false;
+                    SuccessQTE();
+                }
+            }       
+
+            if (rapidPressTimer <= 0)
+            {
+                rapidPressActive = false;
+                FailQTE();
+            }
+        }
     }
 
     public void TurnUI(bool active)
@@ -81,6 +116,21 @@ public class QTE : MonoBehaviour
 
         currentTime = qteDuration;
         qteActive = true;
+        inputLocked = true;
+    }
+
+    public void StartQTE2()
+    {
+        TurnUI(true);
+        rapidPressKey = RandomKey();
+        currentPressCount = 0;
+        qteText.text = rapidPressKey.ToString();
+        Debug.Log($"{rapidPressKey} : {currentPressCount}/{requiredPresses}");
+        controller.canMove = false;
+
+        
+        rapidPressTimer = rapidPressDuration;
+        rapidPressActive = true;
         inputLocked = true;
     }
 
@@ -109,19 +159,25 @@ public class QTE : MonoBehaviour
 
     private void SuccessQTE()
     {
+        rapidPressActive = false;
+        qteActive = false;
         currentStep = 0;
-        TurnUI(false);
+        currentPressCount = 0;
         Debug.Log("Success!");
         controller.canMove = true;
         OnQTESuccess?.Invoke();
         qteDuration -= 0.2f;
+        TurnUI(false);
     }
 
     private void FailQTE()
     {
+        rapidPressActive = false;
+        qteActive = false;
         currentStep = 0;
-        TurnUI(false);
+        currentPressCount = 0;
         controller.canMove = true;
         Debug.Log("Fail!");
+        TurnUI(false);
     }
 }

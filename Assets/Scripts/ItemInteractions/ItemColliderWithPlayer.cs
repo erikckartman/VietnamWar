@@ -6,6 +6,13 @@ using UnityEngine.Events;
 
 public class ItemColliderWithPlayer : MonoBehaviour
 {
+    private enum QTEmode {
+        QTEstandart,
+        QTErapidpress
+    }
+
+    [SerializeField] private QTEmode currentQTE;
+
     [SerializeField] private QTE qte;
     [SerializeField] private Items requiredItem;
     [SerializeField] private UnityEvent onQTEcomplete;
@@ -28,7 +35,15 @@ public class ItemColliderWithPlayer : MonoBehaviour
                 {
                     qte.OnQTESuccess.RemoveAllListeners();
                     qte.OnQTESuccess.AddListener(HandleQteSuccess);
-                    qte.StartQTE();
+
+                    if (currentQTE == QTEmode.QTEstandart)
+                    {
+                        qte.StartQTE();
+                    }
+                    else if (currentQTE == QTEmode.QTErapidpress)
+                    {
+                        qte.StartQTE2();
+                    }
                 }
                 else
                 {
@@ -38,7 +53,15 @@ public class ItemColliderWithPlayer : MonoBehaviour
                         alertGO.SetActive(false);
                         qte.OnQTESuccess.RemoveAllListeners(); 
                         qte.OnQTESuccess.AddListener(HandleQteSuccess);
-                        qte.StartQTE();
+                        
+                        if(currentQTE == QTEmode.QTEstandart)
+                        {
+                            qte.StartQTE();
+                        }
+                        else if(currentQTE == QTEmode.QTErapidpress)
+                        {
+                            qte.StartQTE2();
+                        }
                     }
                     else
                     {
