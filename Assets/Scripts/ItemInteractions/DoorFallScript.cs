@@ -6,7 +6,6 @@ public class DoorFallScript : MonoBehaviour
 {
     public Transform player;
     public float interactionDistance = 3f;
-    public KeyCode interactionKey = KeyCode.E;
     public float fallSpeed = 3f;
     private bool isFalling = false;
 

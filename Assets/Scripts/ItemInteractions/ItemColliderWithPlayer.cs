@@ -10,15 +10,16 @@ public class ItemColliderWithPlayer : MonoBehaviour
     [SerializeField] private Items requiredItem;
     [SerializeField] private UnityEvent onQTEcomplete;
     [SerializeField] private UnityEvent onDontHavingItem;
-    private bool qteCompleted;
+    [SerializeField] private bool qteCompleted;
 
+    [SerializeField] private float distCol;
     [SerializeField] private Text alert;
     [SerializeField] private GameObject alertGO;
     private void Update()
     {
         if (qteCompleted) return;
 
-        Collider[] hitColliders = Physics.OverlapSphere(transform.position, 1f);
+        Collider[] hitColliders = Physics.OverlapSphere(transform.position, distCol);
         foreach (Collider collider in hitColliders)
         {
             if (collider.CompareTag("Player") && Input.GetKeyDown(KeyCode.E))
