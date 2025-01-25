@@ -22,6 +22,9 @@ public class ItemColliderWithPlayer : MonoBehaviour
     [SerializeField] private float distCol;
     [SerializeField] private Text alert;
     [SerializeField] private GameObject alertGO;
+
+    [SerializeField] private GameObject taskObject;
+
     private void Update()
     {
         if (qteCompleted) return;

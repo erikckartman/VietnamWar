@@ -3330,7 +3330,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentQTE: 1
   qte: {fileID: 888273058}
-  requiredItem: {fileID: 0}
+  requiredItem: {fileID: 11400000, guid: b5156d1cc22d0bc4c851f92acd63bfb5, type: 2}
   onQTEcomplete:
     m_PersistentCalls:
       m_Calls:
@@ -3361,14 +3361,14 @@ MonoBehaviour:
   onDontHavingItem:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 888273062}
-        m_TargetAssemblyTypeName: ChangeQuest, Assembly-CSharp
-        m_MethodName: ChangeTask
-        m_Mode: 5
+      - m_Target: {fileID: 888273063}
+        m_TargetAssemblyTypeName: Thoughs, Assembly-CSharp
+        m_MethodName: ShowThought
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 4
           m_FloatArgument: 0
           m_StringArgument: Explore the hotel
           m_BoolArgument: 0
@@ -3377,6 +3377,7 @@ MonoBehaviour:
   distCol: 1
   alert: {fileID: 542909668}
   alertGO: {fileID: 542909666}
+  taskObject: {fileID: 0}
 --- !u!114 &641762974
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4640,7 +4641,10 @@ MonoBehaviour:
     showOnce: 1
   - text: I need a key. Where it could be?
     duration: 3
-    showOnce: 1
+    showOnce: 0
+  - text: I need to find a crowbar to break this door.
+    duration: 3
+    showOnce: 0
 --- !u!114 &888273064
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7567,6 +7571,7 @@ MonoBehaviour:
   distCol: 3
   alert: {fileID: 0}
   alertGO: {fileID: 0}
+  taskObject: {fileID: 0}
 --- !u!1001 &1688415038
 PrefabInstance:
   m_ObjectHideFlags: 0

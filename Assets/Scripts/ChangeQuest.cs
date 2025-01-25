@@ -13,8 +13,8 @@ public class InteractiveObject
 public class ChangeQuest : MonoBehaviour
 { 
     [SerializeField] private GameObject questList;
-    [SerializeField] private Text textQuest;
-    [SerializeField] private GameObject mainObject;
+    public Text textQuest;
+    public GameObject mainObject;
     [SerializeField] private Thoughs thoughtsScript;
 
     [SerializeField] private Transform player;
