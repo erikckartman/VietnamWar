@@ -14,4 +14,6 @@ public class Items : ScriptableObject
     public string listText;
     public AudioClip pickupSound;
     public int thoughIndex;
+    public string taskChanger;
+    public bool isTaskChanged;
 }

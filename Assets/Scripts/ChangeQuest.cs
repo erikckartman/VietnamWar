@@ -33,7 +33,7 @@ public class ChangeQuest : MonoBehaviour
         {
             float distance = (player.position - mainObject.transform.position).magnitude;
 
-            if (distance < 13f)
+            if (distance < 15f)
             {
                 questList.SetActive(false);
             }
@@ -42,7 +42,7 @@ public class ChangeQuest : MonoBehaviour
                 questList.SetActive(true);
             }
 
-            if(distance <= 2f)
+            if(distance <= 4f)
             {
                 DisplayMessage();
             }

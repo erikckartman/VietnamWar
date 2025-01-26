@@ -20,3 +20,5 @@ MonoBehaviour:
   listText: null
   pickupSound: {fileID: 0}
   thoughIndex: 0
+  taskChanger: Explore the cafe
+  isTaskChanged: 1

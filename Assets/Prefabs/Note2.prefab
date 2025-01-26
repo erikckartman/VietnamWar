@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 6944901490205289855}
   - component: {fileID: 1148480191659443122}
   - component: {fileID: 486288226686273124}
-  - component: {fileID: 8446199486770477020}
+  - component: {fileID: 1519987043747692220}
   m_Layer: 0
   m_Name: Note2
   m_TagString: Untagged
@@ -43,7 +43,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1656752168958837365}
-  m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
+  m_Mesh: {fileID: 8017097743144513268, guid: fcb0f61e170815948be7fef6ce35753b, type: 3}
 --- !u!23 &6944901490205289855
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -126,7 +126,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   item: {fileID: 11400000, guid: 4a8d4764338dc3c44aa85826ec3dcef3, type: 2}
---- !u!65 &8446199486770477020
+--- !u!65 &1519987043747692220
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -145,5 +145,5 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 10, y: 0.04540336, z: 10}
-  m_Center: {x: 0, y: -0.02270168, z: 0}
+  m_Size: {x: 0.34917146, y: 0.0032915208, z: 0.3699879}
+  m_Center: {x: 0.0018618702, y: -0.0016505374, z: 0.0028785167}

@@ -29,9 +29,19 @@ public class InventoryUI : MonoBehaviour
 
     [SerializeField] private GameController controller;
 
+    [SerializeField] private Items[] itemSO;
+
     private void Awake()
     {
         GenerateSlots();
+    }
+
+    private void Start()
+    {
+        foreach(Items itemS in itemSO)
+        {
+            itemS.isTaskChanged = false;
+        }
     }
 
     private void Update()

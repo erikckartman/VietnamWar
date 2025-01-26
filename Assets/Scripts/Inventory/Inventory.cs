@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class Inventory : MonoBehaviour
 {
+    [SerializeField] private ChangeQuest changeQuest;
     public List<Items> items = new List<Items>();
     public Items activeItem;
     [SerializeField] private int maxInventorySize = 16;
@@ -31,6 +32,12 @@ public class Inventory : MonoBehaviour
                 {
                     pickupAudio.clip = itemPickup.item.pickupSound;
                     pickupAudio.Play();
+                }
+
+                if (itemPickup.item.taskChanger != "null" && !itemPickup.item.isTaskChanged)
+                {
+                    changeQuest.ChangeTask(itemPickup.item.taskChanger);
+                    itemPickup.item.isTaskChanged = true;                    
                 }
 
                 AddItem(itemPickup.item);
