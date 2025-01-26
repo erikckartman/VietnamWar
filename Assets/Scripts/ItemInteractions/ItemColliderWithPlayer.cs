@@ -14,6 +14,7 @@ public class ItemColliderWithPlayer : MonoBehaviour
     [SerializeField] private QTEmode currentQTE;
 
     [SerializeField] private QTE qte;
+    [SerializeField] private ChangeQuest changeQuest;
     [SerializeField] private Items requiredItem;
     [SerializeField] private UnityEvent onQTEcomplete;
     [SerializeField] private UnityEvent onDontHavingItem;
@@ -27,7 +28,7 @@ public class ItemColliderWithPlayer : MonoBehaviour
 
     private void Update()
     {
-        if (qteCompleted) return;
+        if (qteCompleted || taskObject != changeQuest.mainObject) return;
 
         Collider[] hitColliders = Physics.OverlapSphere(transform.position, distCol);
         foreach (Collider collider in hitColliders)
