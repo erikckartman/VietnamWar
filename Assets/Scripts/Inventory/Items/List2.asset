@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b959451e2aa2c7d4f88966149589a378, type: 3}
+  m_Name: List2
+  m_EditorClassIdentifier: 
+  itemName: List2
+  itemID: 5
+  itemIcon: {fileID: 21300000, guid: 8bcbe6f0f51ecd24e8123d4c5e9f43ee, type: 3}
+  itemObject: {fileID: 1656752168958837365, guid: e791951f8c49ec647a7e00f451e5d265, type: 3}
+  onSceneScale: {x: 0.1, y: 1, z: 0.1}
+  listText: "Dear Mom, I forgot to mention in my previous letter that I will be staying
+    at the hotel while I am in our town. You know that big building right in front
+    of our house, right? That\u2019s the hotel where I\u2019m staying. If you want
+    to, you can come and visit me at the hotel; that would be fantastic. I can\u2019t
+    believe we haven\u2019t seen each other for two years. I have a lot to tell you. 
+    See you soon, Isha"
+  pickupSound: {fileID: 8300000, guid: 0993a9045f56eb143a596b3127838d5a, type: 3}
+  thoughIndex: 2
