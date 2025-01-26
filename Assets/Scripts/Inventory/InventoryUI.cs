@@ -138,6 +138,8 @@ public class InventoryUI : MonoBehaviour
                                 if (Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift))
                                 {
                                     Debug.Log($"Dropping item: {item.itemName}");
+                                    AOpanel.GetComponent<Image>().sprite = null;
+                                    AOpanel.SetActive(false);
                                     inventory.RemoveItem(item);
                                 }
                                 else

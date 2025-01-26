@@ -28,7 +28,7 @@ public class ItemColliderWithPlayer : MonoBehaviour
 
     private void Update()
     {
-        if (qteCompleted || taskObject != changeQuest.mainObject) return;
+        if (qteCompleted /*|| taskObject != changeQuest.mainObject*/) return;
 
         Collider[] hitColliders = Physics.OverlapSphere(transform.position, distCol);
         foreach (Collider collider in hitColliders)

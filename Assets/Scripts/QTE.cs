@@ -25,7 +25,7 @@ public class QTE : MonoBehaviour
     //Second QTE
     private bool rapidPressActive = false;
     private KeyCode rapidPressKey;
-    private int requiredPresses = 10;
+    private int requiredPresses = 6;
     private int currentPressCount = 0;
     private float rapidPressDuration = 2f;
     private float rapidPressTimer;
@@ -141,11 +141,11 @@ public class QTE : MonoBehaviour
         switch (rand)
         {
             case 0:
-                return KeyCode.A;
+                return KeyCode.R;
             case 1:
-                return KeyCode.S;
+                return KeyCode.F;
             case 2:
-                return KeyCode.D;
+                return KeyCode.V;
             case 3:
                 return KeyCode.Z;
             case 4:

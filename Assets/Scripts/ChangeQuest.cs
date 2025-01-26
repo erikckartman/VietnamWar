@@ -1,6 +1,5 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using UnityEditor.VersionControl;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -21,6 +20,8 @@ public class ChangeQuest : MonoBehaviour
     [SerializeField] private List<InteractiveObject> interactiveObjects = new List<InteractiveObject>();
     private bool canStart = false;
     private bool messageShown = false;
+
+    [SerializeField] private GameObject[] objects;
 
     private void Start()
     {
@@ -62,6 +63,11 @@ public class ChangeQuest : MonoBehaviour
     public void ChangeCount(GameObject currentObject)
     {
         mainObject = currentObject;
+    }
+
+    public void ChangeCountByIndex(int index)
+    {
+        mainObject = objects[index];
     }
 
     private IEnumerator TaskOne()

@@ -24,4 +24,4 @@ MonoBehaviour:
   pickupSound: {fileID: 8300000, guid: 0993a9045f56eb143a596b3127838d5a, type: 3}
   thoughIndex: 0
   taskChanger: Go to car
-  isTaskChanged: 0
+  isTaskChanged: 1
