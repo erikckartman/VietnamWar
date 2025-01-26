@@ -82,7 +82,7 @@ public class QTE : MonoBehaviour
             {
                 TurnUI(false);
                 currentPressCount++;
-                qteText.text = rapidPressKey.ToString();
+                qteText.text = $"Quickly press {rapidPressKey}";
                 Debug.Log($"{rapidPressKey} : {currentPressCount}/{requiredPresses}");
                 TurnUI(true);
 
@@ -124,7 +124,7 @@ public class QTE : MonoBehaviour
         TurnUI(true);
         rapidPressKey = RandomKey();
         currentPressCount = 0;
-        qteText.text = rapidPressKey.ToString();
+        qteText.text = $"Quickly press {rapidPressKey}";
         Debug.Log($"{rapidPressKey} : {currentPressCount}/{requiredPresses}");
         controller.canMove = false;
 
