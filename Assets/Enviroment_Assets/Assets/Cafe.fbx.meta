@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: d74d8258bf746034dab1158a2483780a
+guid: 2c670e119255b61419fd2d890a9af31c
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
@@ -7,7 +7,7 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: MainMat
+      name: CafeMaterial
     second: {fileID: 2100000, guid: a539d5dd460ce6c4893cde94254bffb4, type: 2}
   materials:
     materialImportMode: 2
