@@ -18,7 +18,7 @@ MonoBehaviour:
   itemObject: {fileID: 4320956016310463596, guid: 6539a3b02a9cbe7458bab500bb0664a0, type: 3}
   onSceneScale: {x: 2, y: 2, z: 2}
   listText: null
-  pickupSound: {fileID: 0}
+  pickupSound: {fileID: 8300000, guid: c3549a8b7f1619b4db0828215f2ab490, type: 3}
   thoughIndex: 0
   taskChanger: Explore the cafe
   isTaskChanged: 1
