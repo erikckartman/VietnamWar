@@ -24,11 +24,11 @@ public class ItemColliderWithPlayer : MonoBehaviour
     [SerializeField] private Text alert;
     [SerializeField] private GameObject alertGO;
 
-    [SerializeField] private GameObject taskObject;
+    [SerializeField] private bool showAlert;
 
     private void Update()
     {
-        if (qteCompleted /*|| taskObject != changeQuest.mainObject*/) return;
+        if (qteCompleted) return;
 
         Collider[] hitColliders = Physics.OverlapSphere(transform.position, distCol);
         foreach (Collider collider in hitColliders)
@@ -70,7 +70,11 @@ public class ItemColliderWithPlayer : MonoBehaviour
                     else
                     {
                         Debug.Log($"You have to choose {requiredItem.itemName}");
-                        alert.text = "You have to choose " + requiredItem.itemName;
+                        if (showAlert)
+                        {
+                            alert.text = "You have to choose " + requiredItem.itemName;
+                        }
+                        
                         if(onDontHavingItem != null)
                         {
                             onDontHavingItem.Invoke();

@@ -1,7 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class GameController : MonoBehaviour
 {
@@ -28,11 +27,6 @@ public class GameController : MonoBehaviour
         {
             MovePlayer();
             RotateView();
-        }
-
-        if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            //SceneManager.LoadSceneAsync("EndScene");
         }
     }
 

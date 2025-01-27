@@ -13,7 +13,6 @@ public class ChangeQuest : MonoBehaviour
 { 
     [SerializeField] private GameObject questList;
     public Text textQuest;
-    public GameObject mainObject;
     [SerializeField] private Thoughs thoughtsScript;
 
     [SerializeField] private Transform player;
@@ -21,33 +20,11 @@ public class ChangeQuest : MonoBehaviour
     private bool canStart = false;
     private bool messageShown = false;
 
-    [SerializeField] private GameObject[] objects;
 
     private void Start()
     {
         StartCoroutine(TaskOne());
-    }
-
-    private void Update()
-    {
-        if (canStart)
-        {
-            float distance = (player.position - mainObject.transform.position).magnitude;
-
-            if (distance < 15f)
-            {
-                questList.SetActive(false);
-            }
-            else
-            {
-                questList.SetActive(true);
-            }
-
-            if(distance <= 4f)
-            {
-                DisplayMessage();
-            }
-        }
+        questList.SetActive(true);
     }
 
     public void ChangeTask(string currentTask)
@@ -60,15 +37,6 @@ public class ChangeQuest : MonoBehaviour
         script.enabled = true;
     }
 
-    public void ChangeCount(GameObject currentObject)
-    {
-        mainObject = currentObject;
-    }
-
-    public void ChangeCountByIndex(int index)
-    {
-        mainObject = objects[index];
-    }
 
     private IEnumerator TaskOne()
     {
@@ -79,13 +47,4 @@ public class ChangeQuest : MonoBehaviour
         canStart = true;
     }
 
-    private void DisplayMessage()
-    {
-        InteractiveObject foundObject = interactiveObjects.Find(obj => obj.obj == mainObject);
-
-        if (foundObject != null)
-        {
-            thoughtsScript.ShowThought(foundObject.messageIndex);
-        }
-    }
 }

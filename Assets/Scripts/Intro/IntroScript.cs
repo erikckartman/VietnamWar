@@ -69,6 +69,10 @@ public class IntroScript : MonoBehaviour
 
         controller.canMove = true;
         Destroy(intro);
+        
         thoughs.ShowThought(0);
+        yield return new WaitForSeconds(3);
+
+        thoughs.ShowThought(5);
     }
 }
