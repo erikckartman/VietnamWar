@@ -17,12 +17,12 @@ MonoBehaviour:
   itemIcon: {fileID: 21300000, guid: 8bcbe6f0f51ecd24e8123d4c5e9f43ee, type: 3}
   itemObject: {fileID: 1656752168958837365, guid: 8134f1287acf5c5429d19bbd6d99b30b, type: 3}
   onSceneScale: {x: 1, y: 1, z: 1}
-  listText: "Dear Mom, I am eagerly looking forward to my trip home to see you all,
+  listText: "Dear Mom,  I am eagerly looking forward to coming home to see you all,
     as it\u2019s been such a long time since we last met. I miss the cozy streets
-    of our town, our home, Dad, and of course, Bon. Before leaving, I called a friend
+    of our town, our home, Dad, and, of course, Bon. Before leaving, I called a friend
     who owns the caf\xE9 \u201CMorning Lotus.\u201D It\u2019s not far from our house\u2014Bon
-    surely knows where it is. I reserved the fourth table for us for tomorrow. I\u2019m
-    so excited to see you all and have missed you so much!  With love, Isha"
+    surely knows where it is. I\u2019ve reserved the fourth table for us for tomorrow. 
+    I am so excited to see you all and have missed you so much!  With love, Isha"
   pickupSound: {fileID: 8300000, guid: 0993a9045f56eb143a596b3127838d5a, type: 3}
   thoughIndex: 2
   taskChanger: Explore the cafe
