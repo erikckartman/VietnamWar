@@ -3,12 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-[System.Serializable]
-public class InteractiveObject
-{
-    public GameObject obj;
-    public int messageIndex;
-}
 public class ChangeQuest : MonoBehaviour
 { 
     [SerializeField] private GameObject questList;
@@ -16,7 +10,6 @@ public class ChangeQuest : MonoBehaviour
     [SerializeField] private Thoughs thoughtsScript;
 
     [SerializeField] private Transform player;
-    [SerializeField] private List<InteractiveObject> interactiveObjects = new List<InteractiveObject>();
     private bool canStart = false;
     private bool messageShown = false;
 
