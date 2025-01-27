@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemName: List
   itemID: 4
-  itemIcon: {fileID: 21300000, guid: 8bcbe6f0f51ecd24e8123d4c5e9f43ee, type: 3}
+  itemIcon: {fileID: 21300000, guid: cbb37e9a8e0c01a4f91c4521a92e05f9, type: 3}
   itemObject: {fileID: 1656752168958837365, guid: 8134f1287acf5c5429d19bbd6d99b30b, type: 3}
   onSceneScale: {x: 1, y: 1, z: 1}
   listText: "Dear Mom,  I am eagerly looking forward to coming home to see you all,

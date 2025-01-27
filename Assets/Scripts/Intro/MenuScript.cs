@@ -5,23 +5,19 @@ using UnityEngine.UI;
 using UnityEngine.Audio;
 using UnityEngine.SceneManagement;
 
-public class PauseMenu : MonoBehaviour
+public class MenuScript : MonoBehaviour
 {
     [Header("Pause menu pages")]
-    [SerializeField] private GameObject pause;
     [SerializeField] private GameObject options;
     [SerializeField] private GameObject menu;
+    [SerializeField] private GameObject load;
 
     [Header("Sliders")]
     [SerializeField] private Slider master;
     [SerializeField] private Slider sfx;
     [SerializeField] private Slider music;
 
-    private bool isPause = false;
-    [Header("Other elements")]
-    [SerializeField] private GameController gameController;
     [SerializeField] private AudioMixer audioMixer;
-
     private void Start()
     {
         master.value = PlayerPrefs.GetFloat("MasterVolume", 0f);
@@ -29,58 +25,27 @@ public class PauseMenu : MonoBehaviour
         music.value = PlayerPrefs.GetFloat("MusicVolume", 0f);
     }
 
-    private void Update()
+    public void StartGame()
     {
-        if(Input.GetKeyDown(KeyCode.Escape))
-        {
-            isPause = !isPause;
+        load.SetActive(true);
 
-            menu.SetActive(isPause);
-            Cursor.visible = isPause;
-            
-            gameController.canMove = !isPause;
-        }
-
-        if (isPause)
-        {
-            Cursor.lockState = CursorLockMode.None;
-        }
-        else
-        {
-            Cursor.lockState = CursorLockMode.Locked;
-        }
-    }
-
-    public void CloseMenu()
-    {
-        isPause = false;
-        menu.SetActive(isPause);
-
-        Cursor.visible = isPause;
-        Cursor.lockState = CursorLockMode.Locked;
-
-        gameController.canMove = !isPause;
-    }
-
-    public void ExitToMenu()
-    {
         PlayerPrefs.SetFloat("MasterVolume", master.value);
         PlayerPrefs.SetFloat("SFXVolume", sfx.value);
         PlayerPrefs.SetFloat("MusicVolume", music.value);
 
-        SceneManager.LoadScene("MainMenu");
+        SceneManager.LoadScene("SampleScene");
     }
 
     public void OpenOptions()
     {
-        pause.SetActive(false);
+        menu.SetActive(false);
         options.SetActive(true);
     }
 
     public void CloseOptions()
     {
         options.SetActive(false);
-        pause.SetActive(true);
+        menu.SetActive(true);
     }
 
     public void MasterVolume()
