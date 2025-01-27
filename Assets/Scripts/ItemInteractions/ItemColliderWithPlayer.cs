@@ -25,6 +25,7 @@ public class ItemColliderWithPlayer : MonoBehaviour
     [SerializeField] private GameObject alertGO;
 
     [SerializeField] private bool showAlert;
+    [SerializeField] private Text toInteract;
 
     private void Update()
     {
@@ -82,6 +83,17 @@ public class ItemColliderWithPlayer : MonoBehaviour
                         alertGO.SetActive(true);
                         StartCoroutine(WaitToEnd());
                     }
+                }
+            }
+            if(toInteract != null)
+            {
+                if (collider.gameObject.CompareTag("Player"))
+                {
+                    toInteract.gameObject.SetActive(true);
+                }
+                else
+                {
+                    toInteract.gameObject.SetActive(false);
                 }
             }
         }

@@ -24,6 +24,6 @@ MonoBehaviour:
     done nothing wrong\u2014why would they bomb us?  Anyway, Mom and Dad are worried
     about you. Maybe you should come and visit us.  With love, Bon"
   pickupSound: {fileID: 8300000, guid: 0993a9045f56eb143a596b3127838d5a, type: 3}
-  thoughIndex: 0
-  taskChanger: Go to car
+  thoughIndex: 9
+  taskChanger: Explore the ruins
   isTaskChanged: 1
