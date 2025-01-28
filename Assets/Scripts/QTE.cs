@@ -6,6 +6,7 @@ using UnityEngine.UI;
 
 public class QTE : MonoBehaviour
 {
+    [SerializeField] private Image qteImage;
     [SerializeField] private Text qteText;
 
     private float qteDuration = 3f;
@@ -57,7 +58,7 @@ public class QTE : MonoBehaviour
                     }
                     else
                     {
-                        qteText.text = qteSequence[currentStep].ToString();
+                        StartCoroutine(FadeTransition(0.2f, qteSequence[currentStep]));
                     }
                 }
                 else
@@ -78,13 +79,12 @@ public class QTE : MonoBehaviour
         {
 
             rapidPressTimer -= Time.deltaTime;
+            StartCoroutine(PulseAnimation(0.2f));
             if (Input.GetKeyDown(rapidPressKey))
             {
-                TurnUI(false);
                 currentPressCount++;
-                qteText.text = $"Quickly press {rapidPressKey}";
+                qteText.text = rapidPressKey.ToString();
                 Debug.Log($"{rapidPressKey} : {currentPressCount}/{requiredPresses}");
-                TurnUI(true);
 
                 if (currentPressCount >= requiredPresses)
                 {
@@ -103,7 +103,7 @@ public class QTE : MonoBehaviour
 
     public void TurnUI(bool active)
     {
-        qteText.GetComponent<Text>().enabled = active;
+        qteImage.gameObject.SetActive(active);
     }
 
     public void StartQTE()
@@ -124,7 +124,7 @@ public class QTE : MonoBehaviour
         TurnUI(true);
         rapidPressKey = RandomKey();
         currentPressCount = 0;
-        qteText.text = $"Quickly press {rapidPressKey}";
+        qteText.text = rapidPressKey.ToString();
         Debug.Log($"{rapidPressKey} : {currentPressCount}/{requiredPresses}");
         controller.canMove = false;
 
@@ -179,5 +179,50 @@ public class QTE : MonoBehaviour
         controller.canMove = true;
         Debug.Log("Fail!");
         TurnUI(false);
+    }
+
+    private IEnumerator FadeTransition(float duration, KeyCode nextKey)
+    {
+        CanvasGroup canvasGroup = qteImage.GetComponent<CanvasGroup>();
+
+        for (float t = 0; t < duration; t += Time.deltaTime)
+        {
+            canvasGroup.alpha = Mathf.Lerp(1f, 0f, t / duration);
+            yield return null;
+        }
+
+        canvasGroup.alpha = 0f;
+
+        qteText.text = nextKey.ToString();
+
+        for (float t = 0; t < duration; t += Time.deltaTime)
+        {
+            canvasGroup.alpha = Mathf.Lerp(0f, 1f, t / duration);
+            yield return null;
+        }
+
+        canvasGroup.alpha = 1f;
+    }
+
+    private IEnumerator PulseAnimation(float duration)
+    {
+        RectTransform rectTransform = qteImage.GetComponent<RectTransform>();
+
+        Vector3 originalScale = rectTransform.localScale;
+        Vector3 targetScale = originalScale * 1.2f;
+
+        for (float t = 0; t < duration / 2f; t += Time.deltaTime)
+        {
+            rectTransform.localScale = Vector3.Lerp(originalScale, targetScale, t / (duration / 2f));
+            yield return null;
+        }
+
+        for (float t = 0; t < duration / 2f; t += Time.deltaTime)
+        {
+            rectTransform.localScale = Vector3.Lerp(targetScale, originalScale, t / (duration / 2f));
+            yield return null;
+        }
+
+        rectTransform.localScale = originalScale;
     }
 }
