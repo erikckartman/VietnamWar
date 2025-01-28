@@ -5,20 +5,13 @@ using UnityEngine.UI;
 
 public class ChangeQuest : MonoBehaviour
 { 
-    [SerializeField] private GameObject questList;
+    public GameObject questList;
     public Text textQuest;
     [SerializeField] private Thoughs thoughtsScript;
 
     [SerializeField] private Transform player;
     private bool canStart = false;
     private bool messageShown = false;
-
-
-    private void Start()
-    {
-        StartCoroutine(TaskOne());
-        questList.SetActive(true);
-    }
 
     public void ChangeTask(string currentTask)
     {
@@ -29,15 +22,4 @@ public class ChangeQuest : MonoBehaviour
     {
         script.enabled = true;
     }
-
-
-    private IEnumerator TaskOne()
-    {
-        yield return new WaitForSeconds(13);
-
-        textQuest.text = "Explore the house";
-        questList.SetActive(true);
-        canStart = true;
-    }
-
 }

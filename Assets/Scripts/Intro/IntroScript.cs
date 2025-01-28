@@ -7,6 +7,7 @@ using UnityEngine.UI;
 public class IntroScript : MonoBehaviour
 {
     [SerializeField] private GameController controller;
+    [SerializeField] private ChangeQuest changeQuest;
     [SerializeField] private GameObject intro;
     [SerializeField] private Thoughs thoughs;
 
@@ -22,23 +23,45 @@ public class IntroScript : MonoBehaviour
         StartCoroutine(GoToGame());
     }
 
+    private IEnumerator FadeText(Text text, string newText, float fadeInDuration, float fadeOutDuration, float waitBeforeFadeIn)
+    {
+        if (text == null) yield break;
+
+        text.text = newText;
+
+        float elapsedTime = 0f;
+        Color originalColor = text.color;
+        while (elapsedTime < fadeInDuration)
+        {
+            elapsedTime += Time.deltaTime;
+            float alpha = Mathf.Lerp(0f, 1f, elapsedTime / fadeInDuration);
+            text.color = new Color(originalColor.r, originalColor.g, originalColor.b, alpha);
+            yield return null;
+        }
+        text.color = new Color(originalColor.r, originalColor.g, originalColor.b, 1f);
+
+        yield return new WaitForSeconds(waitBeforeFadeIn);
+
+
+        elapsedTime = 0f;
+        while (elapsedTime < fadeOutDuration)
+        {
+            elapsedTime += Time.deltaTime;
+            float alpha = Mathf.Lerp(1f, 0f, elapsedTime / fadeOutDuration);
+            text.color = new Color(originalColor.r, originalColor.g, originalColor.b, alpha);
+            yield return null;
+        }
+        text.color = new Color(originalColor.r, originalColor.g, originalColor.b, 0f);
+    }
+
     private IEnumerator GoToGame()
     {
-        if (mainText != null)
-        {
-            float elapsedTime1 = 0f;
-            Color originalTextColor = mainText.color;
+        yield return StartCoroutine(FadeText(mainText, "Vietnam\n1969", 3f, 3f, 2f));
 
-            while (elapsedTime1 < 5f)
-            {
-                elapsedTime1 += Time.deltaTime;
-                float alpha = Mathf.Lerp(0f, 1f, elapsedTime1 / 5f);
-                mainText.color = new Color(originalTextColor.r, originalTextColor.g, originalTextColor.b, alpha);
-                yield return null;
-            }
+        yield return new WaitForSeconds(1f);
+        mainText.resizeTextForBestFit = true;
 
-            mainText.color = new Color(originalTextColor.r, originalTextColor.g, originalTextColor.b, 1f);
-        }
+        yield return StartCoroutine(FadeText(mainText, "During the most tragic years of the Vietnam War, countless towns across the country were devastated by relentless bombing campaigns. Innocent civilians were drawn into the conflict, losing their families, homes, and everything they held dear...", 3f, 3f, 6f));
 
         float elapsedTime = 0f;
         Color originalColor = image.color;
@@ -50,13 +73,10 @@ public class IntroScript : MonoBehaviour
             elapsedTime += Time.deltaTime;
 
             float alpha = Mathf.Lerp(originalColor.a, 0f, elapsedTime / fadeDuration);
-            Color originalTextColorFinal = mainText != null ? mainText.color : Color.clear;
             float volume1 = Mathf.Lerp(originalVolume1, 0f, elapsedTime / fadeDuration);
             float volume2 = Mathf.Lerp(originalVolume2, 0f, elapsedTime / fadeDuration);
 
             image.color = new Color(originalColor.r, originalColor.g, originalColor.b, alpha);
-            mainText.color = new Color(originalTextColorFinal.r, originalTextColorFinal.g, originalTextColorFinal.b, alpha);
-
             audioSource1.volume = volume1;
             audioSource2.volume = volume2;
 
@@ -69,8 +89,11 @@ public class IntroScript : MonoBehaviour
 
         controller.canMove = true;
         Destroy(intro);
-        
+
         thoughs.ShowThought(0);
+
+        changeQuest.textQuest.text = "Explore the house";
+        changeQuest.questList.SetActive(true);
         yield return new WaitForSeconds(3);
 
         thoughs.ShowThought(5);

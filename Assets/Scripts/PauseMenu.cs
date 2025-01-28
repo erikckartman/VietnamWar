@@ -37,18 +37,18 @@ public class PauseMenu : MonoBehaviour
 
             menu.SetActive(isPause);
             Cursor.visible = isPause;
-            
-            gameController.canMove = !isPause;
-        }
 
-        if (isPause)
-        {
-            Cursor.lockState = CursorLockMode.None;
-        }
-        else
-        {
-            Cursor.lockState = CursorLockMode.Locked;
-        }
+            if (isPause)
+            {
+                Cursor.lockState = CursorLockMode.None;
+            }
+            else
+            {
+                Cursor.lockState = CursorLockMode.Locked;
+            }
+
+            gameController.canMove = !isPause;
+        }        
     }
 
     public void CloseMenu()
