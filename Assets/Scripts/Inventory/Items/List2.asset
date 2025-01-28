@@ -17,12 +17,11 @@ MonoBehaviour:
   itemIcon: {fileID: 21300000, guid: 9350f6d5cdcdeab49899e1581a6701a2, type: 3}
   itemObject: {fileID: 1656752168958837365, guid: e791951f8c49ec647a7e00f451e5d265, type: 3}
   onSceneScale: {x: 1, y: 1, z: 1}
-  listText: "Dear Isha,  It\u2019s Bon. We haven\u2019t talked in a while\u2014how
-    are things in the south? Is everything fine? Did you hear about the bombings
-    yesterday? Grandparents lost their home because of them, and there are some worries
-    that our town might be bombed soon. But I don\u2019t believe that. We\u2019ve
-    done nothing wrong\u2014why would they bomb us?  Anyway, Mom and Dad are worried
-    about you. Maybe you should come and visit us.  With love, Bon"
+  listText: "Hi Mom,  You wouldn\u2019t believe it, but I got the flu right before
+    my trip to see you. Don\u2019t worry, I\u2019m still coming back to our city,
+    but I\u2019ll need to go to the hospital as soon as I arrive. So I suggest we
+    meet near the hospital before heading to the caf\xE9, if that\u2019s okay.  With
+    love, Isha"
   pickupSound: {fileID: 8300000, guid: 0993a9045f56eb143a596b3127838d5a, type: 3}
   thoughIndex: 9
   taskChanger: Explore the ruins
