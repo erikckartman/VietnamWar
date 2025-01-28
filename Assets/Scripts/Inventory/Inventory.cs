@@ -22,7 +22,7 @@ public class Inventory : MonoBehaviour
 
     private void TryPickUpItem()
     {
-        Collider[] hitColliders = Physics.OverlapSphere(transform.position, 3f);
+        Collider[] hitColliders = Physics.OverlapSphere(transform.position, 1.5f);
 
         foreach (Collider hit in hitColliders)
         {
