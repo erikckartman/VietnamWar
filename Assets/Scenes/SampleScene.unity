@@ -4182,7 +4182,6 @@ MonoBehaviour:
   alert: {fileID: 542909668}
   alertGO: {fileID: 542909666}
   showAlert: 1
-  toInteract: {fileID: 0}
 --- !u!114 &641762974
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4326,18 +4325,6 @@ PrefabInstance:
     - target: {fileID: 169145989474178090, guid: 04c821f86a8a44047b192cea208cba6a, type: 3}
       propertyPath: m_Name
       value: RandomLetter
-      objectReference: {fileID: 0}
-    - target: {fileID: 4730790288787263775, guid: 04c821f86a8a44047b192cea208cba6a, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 1.0088
-      objectReference: {fileID: 0}
-    - target: {fileID: 4730790288787263775, guid: 04c821f86a8a44047b192cea208cba6a, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 1.0088
-      objectReference: {fileID: 0}
-    - target: {fileID: 4730790288787263775, guid: 04c821f86a8a44047b192cea208cba6a, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 1.0088
       objectReference: {fileID: 0}
     - target: {fileID: 4730790288787263775, guid: 04c821f86a8a44047b192cea208cba6a, type: 3}
       propertyPath: m_LocalPosition.x
@@ -5345,7 +5332,6 @@ MonoBehaviour:
   alert: {fileID: 542909668}
   alertGO: {fileID: 542909666}
   showAlert: 0
-  toInteract: {fileID: 0}
 --- !u!65 &807995451
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -5701,37 +5687,37 @@ MonoBehaviour:
   uiText: {fileID: 1572113974}
   thoughts:
   - text: What's going on? I need to go home.
-    duration: 3
+    duration: 5
     showOnce: 1
   - text: Where's my family? Nobody's here.
-    duration: 3
+    duration: 5
     showOnce: 1
   - text: Maybe I should search in the Loutus Cafe?
-    duration: 3
+    duration: 5
     showOnce: 1
   - text: I need a key. Where it could be?
-    duration: 3
+    duration: 5
     showOnce: 0
   - text: Damn! I need to break it!
-    duration: 3
+    duration: 5
     showOnce: 1
   - text: The houses are destroyed...
-    duration: 3
+    duration: 5
     showOnce: 1
   - text: Hm... It's closed.
-    duration: 3
+    duration: 5
     showOnce: 0
   - text: This could be useful!
-    duration: 3
+    duration: 5
     showOnce: 1
   - text: Damn!
-    duration: 3
+    duration: 5
     showOnce: 1
   - text: I need to go to the hospital, but the way seems to be blocked by ruins!
-    duration: 3
+    duration: 5
     showOnce: 1
   - text: It looks like I can get through the ruins through this car.
-    duration: 3
+    duration: 5
     showOnce: 1
 --- !u!114 &888273064
 MonoBehaviour:
@@ -8573,6 +8559,7 @@ MonoBehaviour:
   activeItem: {fileID: 0}
   maxInventorySize: 16
   pickupAudio: {fileID: 1348748171}
+  interactUI: {fileID: 2008862923}
 --- !u!114 &1348748168
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13247,7 +13234,7 @@ GameObject:
   - component: {fileID: 2185375811468303427}
   m_Layer: 0
   m_Name: Car2
-  m_TagString: Untagged
+  m_TagString: Interactable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -13672,7 +13659,6 @@ MonoBehaviour:
   alert: {fileID: 542909668}
   alertGO: {fileID: 542909666}
   showAlert: 1
-  toInteract: {fileID: 2008862925}
 --- !u!65 &2185375811468303428
 BoxCollider:
   m_ObjectHideFlags: 0

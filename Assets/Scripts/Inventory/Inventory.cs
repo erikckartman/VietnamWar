@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using System.Runtime.CompilerServices;
 using TMPro;
 using UnityEngine;
@@ -12,11 +13,28 @@ public class Inventory : MonoBehaviour
     [SerializeField] private int maxInventorySize = 16;
     [SerializeField] private AudioSource pickupAudio;
 
+    private bool haveInteractableObjects = false;
+    [SerializeField] private GameObject interactUI;
+
     private void Update()
     {
+        CheckForInteractables();
+
         if (Input.GetKeyDown(KeyCode.E))
         {
             TryPickUpItem();
+        }
+    }
+
+    private void CheckForInteractables()
+    {
+        bool found = Physics.OverlapSphere(transform.position, 1.5f)
+                            .Any(col => col.CompareTag("Interactable"));
+
+        if (found != haveInteractableObjects)
+        {
+            haveInteractableObjects = found;
+            interactUI.SetActive(found);
         }
     }
 
@@ -27,9 +45,10 @@ public class Inventory : MonoBehaviour
         foreach (Collider hit in hitColliders)
         {
             ItemPickup itemPickup = hit.GetComponent<ItemPickup>();
+
             if (itemPickup != null && items.Count < maxInventorySize)
             {
-                if(itemPickup.item.pickupSound != null)
+                if (itemPickup.item.pickupSound != null)
                 {
                     pickupAudio.clip = itemPickup.item.pickupSound;
                     pickupAudio.Play();
@@ -38,12 +57,12 @@ public class Inventory : MonoBehaviour
                 if (itemPickup.item.taskChanger != "null" && !itemPickup.item.isTaskChanged)
                 {
                     changeQuest.ChangeTask(itemPickup.item.taskChanger);
-                    itemPickup.item.isTaskChanged = true;                    
+                    itemPickup.item.isTaskChanged = true;
                 }
 
                 AddItem(itemPickup.item);
                 Destroy(hit.gameObject);
-                break;            
+                break;
             }
         }
     }

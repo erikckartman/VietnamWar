@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: -7781572687116832061}
   m_Layer: 0
   m_Name: Postbox
-  m_TagString: Untagged
+  m_TagString: Interactable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -88,11 +88,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ab299815db3aec43a0bb1d59fdd01e5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currentQTE: 0
   qte: {fileID: 0}
+  changeQuest: {fileID: 0}
   requiredItem: {fileID: 0}
   onQTEcomplete:
     m_PersistentCalls:
       m_Calls: []
+  onDontHavingItem:
+    m_PersistentCalls:
+      m_Calls: []
+  qteCompleted: 0
+  distCol: 0
+  alert: {fileID: 0}
+  alertGO: {fileID: 0}
+  showAlert: 0
+  toInteract: {fileID: 0}
 --- !u!33 &-7781572687116832061
 MeshFilter:
   m_ObjectHideFlags: 0

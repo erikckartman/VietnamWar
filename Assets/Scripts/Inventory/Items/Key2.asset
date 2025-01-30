@@ -20,5 +20,5 @@ MonoBehaviour:
   listText: null
   pickupSound: {fileID: 8300000, guid: 8f943510de05ca9478bac01131da691c, type: 3}
   thoughIndex: 0
-  taskChanger: Go trough rhe ruins
+  taskChanger: Go through the ruins
   isTaskChanged: 0
