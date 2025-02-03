@@ -8,6 +8,7 @@ using UnityEngine;
 public class Inventory : MonoBehaviour
 {
     [SerializeField] private ChangeQuest changeQuest;
+
     public List<Items> items = new List<Items>();
     public Items activeItem;
     [SerializeField] private int maxInventorySize = 16;
@@ -28,8 +29,7 @@ public class Inventory : MonoBehaviour
 
     private void CheckForInteractables()
     {
-        bool found = Physics.OverlapSphere(transform.position, 1.5f)
-                            .Any(col => col.CompareTag("Interactable"));
+        bool found = Physics.OverlapSphere(transform.position, 1.5f).Any(col => col.CompareTag("Interactable"));
 
         if (found != haveInteractableObjects)
         {

@@ -17,7 +17,7 @@ public class PauseMenu : MonoBehaviour
     [SerializeField] private Slider sfx;
     [SerializeField] private Slider music;
 
-    private bool isPause = false;
+    [HideInInspector] public bool isPause = false;
     [Header("Other elements")]
     [SerializeField] private GameController gameController;
     [SerializeField] private AudioMixer audioMixer;
@@ -31,23 +31,27 @@ public class PauseMenu : MonoBehaviour
 
     private void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Escape))
+        if(gameController.canMove)
         {
-            isPause = !isPause;
-
-            menu.SetActive(isPause);
-            Cursor.visible = isPause;
-
-            if (isPause)
+            if (Input.GetKeyDown(KeyCode.Escape))
             {
-                Cursor.lockState = CursorLockMode.None;
-            }
-            else
-            {
-                Cursor.lockState = CursorLockMode.Locked;
-            }
+                isPause = !isPause;
 
-            gameController.canMove = !isPause;
+                menu.SetActive(isPause);
+                Cursor.visible = isPause;
+
+                if (isPause)
+                {
+                    Cursor.lockState = CursorLockMode.None;
+                }
+                else
+                {
+                    Cursor.lockState = CursorLockMode.Locked;
+                }
+
+                gameController.canMove = !isPause;
+            }
+            
         }        
     }
 

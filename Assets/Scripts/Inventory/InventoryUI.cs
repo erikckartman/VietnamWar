@@ -6,10 +6,12 @@ using UnityEngine.UI;
 public class InventoryUI : MonoBehaviour
 {
     [SerializeField] private Inventory inventory;
+
     [SerializeField] private RectTransform slotsParent;
     [SerializeField] private GameObject inventoryUI;
     [SerializeField] private GameObject slotPrefab;
     [SerializeField] private Thoughs thoughs;
+    [SerializeField] private PauseMenu pauseMenu;
 
     [SerializeField] private int rows = 8;
     [SerializeField] private int columns = 12;
@@ -21,7 +23,7 @@ public class InventoryUI : MonoBehaviour
     [Header("List objects")]
     [SerializeField] private GameObject listSprite;
     [SerializeField] private GameObject listText;
-    private bool openInventor = false;
+    [SerializeField] public bool openInventor = false;
     private bool listWatch = false;
 
     [Header("Active item elements")]
@@ -46,14 +48,24 @@ public class InventoryUI : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyUp(KeyCode.Q) && !listWatch && controller.canMove)
+        if (Input.GetKeyUp(KeyCode.Q) && !listWatch && !openInventor && controller.canMove && !pauseMenu.isPause)
         {
             openInventor = !inventoryUI.activeSelf;
             inventoryUI.SetActive(openInventor);
 
             Cursor.lockState = openInventor ? CursorLockMode.None : CursorLockMode.Locked;
             Cursor.visible = openInventor;
+            controller.canMove = !openInventor;
+        }
 
+        if(openInventor && !pauseMenu.isPause && Input.GetKeyUp(KeyCode.Escape))
+        {
+            openInventor = false;
+            inventoryUI.SetActive(openInventor);
+
+            Cursor.lockState = openInventor ? CursorLockMode.None : CursorLockMode.Locked;
+            Cursor.visible = openInventor;
+            controller.canMove = !openInventor;
         }
 
         if(inventory.activeItem != null)

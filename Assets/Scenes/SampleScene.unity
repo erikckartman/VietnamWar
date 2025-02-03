@@ -5410,11 +5410,13 @@ MonoBehaviour:
   inventoryUI: {fileID: 555784304}
   slotPrefab: {fileID: 9043415574766417117, guid: 7e300ab9232803542b971c729e6bde44, type: 3}
   thoughs: {fileID: 888273063}
+  pauseMenu: {fileID: 888273065}
   rows: 4
   columns: 4
   slotSpacing: 5
   listSprite: {fileID: 609464863}
   listText: {fileID: 1315812142}
+  openInventor: 0
   AOpanel: {fileID: 202721703}
   controller: {fileID: 1348748165}
   itemSO:
@@ -5750,8 +5752,10 @@ MonoBehaviour:
   master: {fileID: 1085195996}
   sfx: {fileID: 1022897330}
   music: {fileID: 335183242}
+  isPause: 0
   gameController: {fileID: 1348748165}
   audioMixer: {fileID: 24100000, guid: 905bdfdca13c43b4996c83946874e934, type: 2}
+  inventoryUI: {fileID: 888273057}
 --- !u!1001 &891885977
 PrefabInstance:
   m_ObjectHideFlags: 0
