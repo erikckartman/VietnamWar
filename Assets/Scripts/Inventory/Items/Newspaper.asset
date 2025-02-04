@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b959451e2aa2c7d4f88966149589a378, type: 3}
+  m_Name: Newspaper
+  m_EditorClassIdentifier: 
+  itemName: Newspaper
+  itemID: 7
+  itemIcon: {fileID: 21300000, guid: cbb37e9a8e0c01a4f91c4521a92e05f9, type: 3}
+  itemObject: {fileID: 169145989474178090, guid: 2cb12dec8bdb9c94abc96741ebe30657, type: 3}
+  onSceneScale: {x: 1, y: 1, z: 1}
+  listText: "<b>The Northern Herald</b> <br><b>March 12, 1969</b> <br><br><b>A Night
+    of Destruction: American and Southern Vietnamese Forces Bombard Peaceful Districts</b><br>On
+    March 10, North Vietnam's tranquil neighborhoods were bombed by American and
+    Southern Vietnamese forces, leaving many homes destroyed and families devastated.
+    <br><b>Cities Under Siege</b> Several cities faced heavy bombardment: <br>\u2022
+    <b>Hanoi:</b> Residential buildings turned to rubble.  <br>\u2022 <b>Haiphong:</b>
+    Industrial sector heavily damaged.  <br>\u2022 <b>Thai Nguyen:</b> Civilian areas
+    suffered high casualties."
+  pickupSound: {fileID: 8300000, guid: 0993a9045f56eb143a596b3127838d5a, type: 3}
+  thoughIndex: 2
+  taskChanger: null
+  isTaskChanged: 0

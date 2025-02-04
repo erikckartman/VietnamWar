@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -18,8 +19,6 @@ public class InventoryUI : MonoBehaviour
     [SerializeField] private float slotSpacing = 10f;
 
     private GameObject[,] slots;
-
-
     [Header("List objects")]
     [SerializeField] private GameObject listSprite;
     [SerializeField] private GameObject listText;
@@ -178,7 +177,7 @@ public class InventoryUI : MonoBehaviour
     private void ShowList()
     {
         listSprite.GetComponent<Image>().sprite = inventory.activeItem.itemIcon;
-        listText.GetComponent<Text>().text = inventory.activeItem.listText;
+        listText.GetComponent<TextMeshProUGUI>().text = inventory.activeItem.listText;
         listSprite.SetActive(listWatch);
         listText.SetActive(listWatch);
     }

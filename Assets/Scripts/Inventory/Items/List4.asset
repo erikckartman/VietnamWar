@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b959451e2aa2c7d4f88966149589a378, type: 3}
+  m_Name: List4
+  m_EditorClassIdentifier: 
+  itemName: OptionalList2
+  itemID: 8
+  itemIcon: {fileID: 21300000, guid: 8bcbe6f0f51ecd24e8123d4c5e9f43ee, type: 3}
+  itemObject: {fileID: 1656752168958837365, guid: 1b6331071ea8a024a82ac7a90089b048, type: 3}
+  onSceneScale: {x: 1, y: 1, z: 1}
+  listText: "<b>March 12, 1969</b> <br>Dear Diary, <br> The loud noises and explosions
+    won't stop. I'm so scared. I can't find Mama and Papa. I looked everywhere in
+    the house, but they are not here. I hope they are safe. I can't stop crying.
+    My heart hurts so much. I miss them. Why is this happening? I just want everything
+    to be like before, when we were all together and happy. Please, let them come
+    back to me\u2026"
+  pickupSound: {fileID: 8300000, guid: 0993a9045f56eb143a596b3127838d5a, type: 3}
+  thoughIndex: 0
+  taskChanger: null
+  isTaskChanged: 0

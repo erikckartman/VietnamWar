@@ -37,6 +37,7 @@ public class ItemColliderWithPlayer : MonoBehaviour
             {
                 if (requiredItem == null)
                 {
+                    gameObject.tag = "Untagged";
                     qte.OnQTESuccess.RemoveAllListeners();
                     qte.OnQTESuccess.AddListener(HandleQteSuccess);
 
@@ -53,6 +54,7 @@ public class ItemColliderWithPlayer : MonoBehaviour
                 {
                     if (collider.GetComponent<Inventory>().activeItem == requiredItem)
                     {
+                        gameObject.tag = "Untagged";
                         StopCoroutine(WaitToEnd());
                         alertGO.SetActive(false);
                         qte.OnQTESuccess.RemoveAllListeners(); 
