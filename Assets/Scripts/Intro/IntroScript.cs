@@ -92,7 +92,7 @@ public class IntroScript : MonoBehaviour
 
         thoughs.ShowThought(0);
 
-        changeQuest.textQuest.text = "Explore the house";
+        changeQuest.textQuest.text = "Explore the house with the yard";
         changeQuest.questList.SetActive(true);
         yield return new WaitForSeconds(3);
 
