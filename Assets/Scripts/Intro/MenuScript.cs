@@ -25,9 +25,11 @@ public class MenuScript : MonoBehaviour
         music.value = PlayerPrefs.GetFloat("MusicVolume", 0f);
     }
 
-    public void StartGame()
+    public void StartGame(bool loading)
     {
         load.SetActive(true);
+
+        ProgressSaveSystem.isLoadGame = loading;
 
         PlayerPrefs.SetFloat("MasterVolume", master.value);
         PlayerPrefs.SetFloat("SFXVolume", sfx.value);

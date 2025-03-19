@@ -10,6 +10,7 @@ public class IntroScript : MonoBehaviour
     [SerializeField] private ChangeQuest changeQuest;
     [SerializeField] private GameObject intro;
     [SerializeField] private Thoughs thoughs;
+    [SerializeField] private ProgressSaveSystem progressSaveSystem;
 
     [Header("Intro elements")]
     [SerializeField] private Image image;
@@ -20,7 +21,14 @@ public class IntroScript : MonoBehaviour
 
     private void Start()
     {
-        StartCoroutine(GoToGame());
+        if(progressSaveSystem.currentProgress == 0)
+        {
+            StartCoroutine(GoToGame());
+        }
+        else
+        {
+            CountinueGame();
+        }
     }
 
     private IEnumerator FadeText(Text text, string newText, float fadeInDuration, float fadeOutDuration, float waitBeforeFadeIn)
@@ -97,5 +105,11 @@ public class IntroScript : MonoBehaviour
         yield return new WaitForSeconds(3);
 
         thoughs.ShowThought(5);
+    }
+
+    private void CountinueGame()
+    {
+        Destroy(intro);
+        controller.canMove = true;
     }
 }

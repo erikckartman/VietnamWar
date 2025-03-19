@@ -11,6 +11,11 @@ public class ItemColliderWithPlayer : MonoBehaviour
         QTErapidpress
     }
 
+    [Header("Progress items")]
+    [SerializeField] private ProgressSaveSystem progressSaveSystem;
+    [SerializeField] private int requiredProgress;
+
+    [Header("Other")]
     [SerializeField] private QTEmode currentQTE;
 
     [SerializeField] private QTE qte;
@@ -25,6 +30,17 @@ public class ItemColliderWithPlayer : MonoBehaviour
     [SerializeField] private GameObject alertGO;
 
     [SerializeField] private bool showAlert;
+
+    private void Start()
+    {
+        if(progressSaveSystem != null)
+        {
+            if(progressSaveSystem.currentProgress >= requiredProgress)
+            {
+                qteCompleted = true;
+            }
+        }
+    }
 
     private void Update()
     {
