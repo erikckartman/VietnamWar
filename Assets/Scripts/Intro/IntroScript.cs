@@ -21,19 +21,17 @@ public class IntroScript : MonoBehaviour
 
     private void Start()
     {
-        if(progressSaveSystem.currentProgress == 0)
-        {
-            StartCoroutine(GoToGame());
-        }
-        else
-        {
-            CountinueGame();
-        }
+        StartCoroutine(GoToGame());
     }
 
     private IEnumerator FadeText(Text text, string newText, float fadeInDuration, float fadeOutDuration, float waitBeforeFadeIn)
     {
         if (text == null) yield break;
+
+        if (progressSaveSystem.currentProgress > 0)
+        {
+            ContinueGame();
+        }
 
         text.text = newText;
 
@@ -98,6 +96,7 @@ public class IntroScript : MonoBehaviour
         controller.canMove = true;
         Destroy(intro);
 
+        progressSaveSystem.UpdateProgress();
         thoughs.ShowThought(0);
 
         changeQuest.textQuest.text = "Explore the house with the yard";
@@ -107,9 +106,10 @@ public class IntroScript : MonoBehaviour
         thoughs.ShowThought(5);
     }
 
-    private void CountinueGame()
+    private void ContinueGame()
     {
         Destroy(intro);
         controller.canMove = true;
+        changeQuest.questList.SetActive(true);
     }
 }

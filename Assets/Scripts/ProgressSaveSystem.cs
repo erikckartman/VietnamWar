@@ -3,19 +3,24 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.IO;
 using UnityEngine.SceneManagement;
+using static UnityEditor.Progress;
 
-[System.Serializable]
 public class SaveData
 {
     public int progress;
     public Vector3 playerPosition;
-    public List<Items> inventoryItems = new List<Items>();
+    public string taskToSave;
+    public List<int> inventoryItems = new List<int>();
+    public List<bool> completedTasks = new List<bool>();
 }
 
 public class ProgressSaveSystem : MonoBehaviour
 {
     public static ProgressSaveSystem instance;
 
+    [SerializeField] private ChangeQuest changeQuest;
+    [SerializeField] private List<Items> allItems = new List<Items>();
+    [SerializeField] private List<ItemColliderWithPlayer> allInteracts = new List<ItemColliderWithPlayer>();
     public int currentProgress = 0;
     [SerializeField] private GameObject player;
     [SerializeField] private Inventory inventory;
@@ -45,17 +50,24 @@ public class ProgressSaveSystem : MonoBehaviour
         SaveData data = new SaveData()
         {
             progress = currentProgress,
-            playerPosition = player.transform.position
+            playerPosition = player.transform.position,
+            taskToSave = changeQuest.currentTask
         };
 
         foreach (var item in inventory.items)
         {
-            data.inventoryItems.Add(new Items { itemName = item.itemName, itemID = item.itemID });
+            data.inventoryItems.Add(item.itemID);
+        }
+
+        foreach (var interact in allInteracts)
+        {
+            data.completedTasks.Add(interact.qteCompleted);
         }
 
         string json = JsonUtility.ToJson(data, true);
         File.WriteAllText(savePath, json);
         Debug.Log("Progress saved: " + savePath);
+        Debug.Log(json);
     }
 
     public void LoadProgress()
@@ -67,12 +79,24 @@ public class ProgressSaveSystem : MonoBehaviour
 
             currentProgress = data.progress;
             player.transform.position = data.playerPosition;
+            changeQuest.ChangeTask(data.taskToSave);
 
             inventory.items.Clear();
             foreach (var itemData in data.inventoryItems)
             {
-                Items newItem = new Items { itemName = itemData.itemName, itemID = itemData.itemID };
-                inventory.items.Add(newItem);
+                Items newItem = FindItemByID(itemData);
+                if (newItem != null)
+                {
+                    inventory.items.Add(newItem);
+                }
+            }
+
+            for (int i = 0; i < data.completedTasks.Count; i++)
+            {
+                if (i < allInteracts.Count)
+                {
+                    allInteracts[i].qteCompleted = data.completedTasks[i];
+                }
             }
 
             Debug.Log("Progress loaded");
@@ -83,4 +107,13 @@ public class ProgressSaveSystem : MonoBehaviour
         }
     }
 
+    private Items FindItemByID(int id)
+    {
+        return allItems.Find(item => item.itemID == id);
+    }
+
+    private ItemColliderWithPlayer FindInteract(bool isDone)
+    {
+        return allInteracts.Find(c => c.qteCompleted == isDone);
+    }
 }

@@ -4301,7 +4301,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   progressSaveSystem: {fileID: 0}
-  requiredProgress: 0
+  requiredProgress: 2
   currentQTE: 1
   qte: {fileID: 888273058}
   changeQuest: {fileID: 888273062}
@@ -5882,6 +5882,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   questList: {fileID: 662775121}
+  currentTask: 
   textQuest: {fileID: 416656575}
   thoughtsScript: {fileID: 888273063}
   player: {fileID: 1348748164}
@@ -11869,6 +11870,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemToTake: {fileID: 11400000, guid: 0d86df65858950a4ab1553af82f669e9, type: 2}
   spawnPos: {x: 0, y: 0, z: 0.3}
+  progressSaveSystem: {fileID: 2021925251}
 --- !u!64 &1970635040
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -12308,6 +12310,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0c532deba8f871d44bcf3dafc8c639ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  changeQuest: {fileID: 888273062}
+  allItems:
+  - {fileID: 11400000, guid: 9288bdef8ddc0df42b11b6cf2ebd5489, type: 2}
+  - {fileID: 11400000, guid: b5156d1cc22d0bc4c851f92acd63bfb5, type: 2}
+  - {fileID: 11400000, guid: 05500b0a619d34b44bb64a26b8ec326c, type: 2}
+  - {fileID: 11400000, guid: 9226c2f26514d4c42b8a124227f34638, type: 2}
+  - {fileID: 11400000, guid: 0d86df65858950a4ab1553af82f669e9, type: 2}
+  - {fileID: 11400000, guid: 4a8d4764338dc3c44aa85826ec3dcef3, type: 2}
+  - {fileID: 11400000, guid: 7a5a7be2c8a731141b8d992e0cfc3245, type: 2}
+  - {fileID: 11400000, guid: 46460fb810150074aae3277cbc70f80a, type: 2}
+  - {fileID: 11400000, guid: 5a971184b553d814ab4a033f1367ed6c, type: 2}
+  allInteracts:
+  - {fileID: 2114021662}
+  - {fileID: 641762973}
+  - {fileID: 2185375811468303427}
   currentProgress: 0
   player: {fileID: 1348748159}
   inventory: {fileID: 1348748167}
@@ -12915,10 +12932,10 @@ PrefabInstance:
     - target: {fileID: 2867886393631932575, guid: 31dc6d5f050799843bde3e72c0f2019d, type: 3}
       propertyPath: progressSaveSystem
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 2021925251}
     - target: {fileID: 2867886393631932575, guid: 31dc6d5f050799843bde3e72c0f2019d, type: 3}
       propertyPath: onQTEcomplete.m_PersistentCalls.m_Calls.Array.size
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 2867886393631932575, guid: 31dc6d5f050799843bde3e72c0f2019d, type: 3}
       propertyPath: onDontHavingItem.m_PersistentCalls.m_Calls.Array.size
@@ -13210,6 +13227,17 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 1970635045}
   m_SourcePrefab: {fileID: 100100000, guid: 31dc6d5f050799843bde3e72c0f2019d, type: 3}
+--- !u!114 &2114021662 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2867886393631932575, guid: 31dc6d5f050799843bde3e72c0f2019d, type: 3}
+  m_PrefabInstance: {fileID: 2114021661}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1970635029}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9ab299815db3aec43a0bb1d59fdd01e5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!33 &222437978917683529
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -14176,7 +14204,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   progressSaveSystem: {fileID: 0}
-  requiredProgress: 0
+  requiredProgress: 3
   currentQTE: 0
   qte: {fileID: 888273058}
   changeQuest: {fileID: 888273062}

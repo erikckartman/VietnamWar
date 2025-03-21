@@ -23,7 +23,7 @@ public class ItemColliderWithPlayer : MonoBehaviour
     [SerializeField] private Items requiredItem;
     [SerializeField] private UnityEvent onQTEcomplete;
     [SerializeField] private UnityEvent onDontHavingItem;
-    [SerializeField] private bool qteCompleted;
+    [HideInInspector] public bool qteCompleted;
 
     [SerializeField] private float distCol;
     [SerializeField] private Text alert;
@@ -35,7 +35,7 @@ public class ItemColliderWithPlayer : MonoBehaviour
     {
         if(progressSaveSystem != null)
         {
-            if(progressSaveSystem.currentProgress >= requiredProgress)
+            if(progressSaveSystem.currentProgress > requiredProgress)
             {
                 qteCompleted = true;
             }
