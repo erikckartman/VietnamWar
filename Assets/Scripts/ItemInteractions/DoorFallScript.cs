@@ -10,10 +10,17 @@ public class DoorFallScript : MonoBehaviour
     private bool isFalling = false;
 
     private Quaternion targetRotation;
+    private ItemColliderWithPlayer itemColliderWithPlayer;
 
     private void Start()
     {
         targetRotation = Quaternion.Euler(-90, transform.rotation.eulerAngles.y, transform.rotation.eulerAngles.z);
+        itemColliderWithPlayer = GetComponent<ItemColliderWithPlayer>();
+        
+        if(itemColliderWithPlayer != null)
+        {
+            Invoke(nameof(OnLoadGame), 1f);
+        }
     }
 
     private void Update()
@@ -32,5 +39,13 @@ public class DoorFallScript : MonoBehaviour
     public void BreakTheDoor()
     {
         isFalling = true;
+    }
+
+    public void OnLoadGame()
+    {
+        if (itemColliderWithPlayer.qteCompleted)
+        {
+            isFalling = true;
+        }
     }
 }
