@@ -3151,6 +3151,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 12f0ba3cd26c1614f82011f0051880d2, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 12f0ba3cd26c1614f82011f0051880d2, type: 3}
       propertyPath: m_Name
       value: StraightSidewalk (8)
@@ -6133,6 +6137,10 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: acb31c27edf4ac045a9ea512403d9027, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: acb31c27edf4ac045a9ea512403d9027, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: acb31c27edf4ac045a9ea512403d9027, type: 3}
       propertyPath: m_Name
