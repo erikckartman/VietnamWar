@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class SafeIsOpened : MonoBehaviour
 {
-    [SerializeField] private Animator animator;
+    [SerializeField] private List<Animator> animator = new List<Animator>();
     [SerializeField] private GameObject objectToTake;
     public void OpenSafe()
     {
