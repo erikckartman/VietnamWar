@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 54d33cec06444b94faffd134ccdd9e5c
+guid: efdc5edbce0610f49b896ff0b616e325
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
@@ -7,7 +7,7 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: MainMat
+      name: DoorMat.001
     second: {fileID: 2100000, guid: a539d5dd460ce6c4893cde94254bffb4, type: 2}
   materials:
     materialImportMode: 2
