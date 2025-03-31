@@ -8,7 +8,6 @@ public class GameController : MonoBehaviour
     private float moveSpeed = 5f;
     private float lookSensitivity = 2f;
     [SerializeField] private AudioSource walkSound;
-
     public bool canMove;
 
     //Looking
