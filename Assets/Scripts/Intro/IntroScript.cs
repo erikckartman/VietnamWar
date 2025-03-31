@@ -26,12 +26,13 @@ public class IntroScript : MonoBehaviour
 
     private IEnumerator FadeText(Text text, string newText, float fadeInDuration, float fadeOutDuration, float waitBeforeFadeIn)
     {
-        if (text == null) yield break;
-
         if (progressSaveSystem.currentProgress > 0)
         {
             ContinueGame();
+            yield break;
         }
+
+        if (text == null) yield break;
 
         text.text = newText;
 
@@ -71,6 +72,9 @@ public class IntroScript : MonoBehaviour
 
         float elapsedTime = 0f;
         Color originalColor = image.color;
+
+        if(audioSource1 == null || audioSource2 == null) yield break;
+
         float originalVolume1 = audioSource1.volume;
         float originalVolume2 = audioSource2.volume;
 

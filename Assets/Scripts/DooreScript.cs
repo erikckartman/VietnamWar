@@ -19,11 +19,17 @@ public class DooreScript : MonoBehaviour
 
     private void Update()
     {
-        transform.rotation = Quaternion.Slerp(transform.rotation, isOpen ? openRotation : closedRotation, Time.deltaTime * openingSpeed);
+        if(!isOpen) return;
+
+        transform.rotation = Quaternion.Slerp(transform.rotation, openRotation, Time.deltaTime * openingSpeed);
+        if (Quaternion.Angle(transform.rotation, openRotation) < 0.1f)
+        {
+            isOpen = false;
+        }
     }
 
     public void OpenCloseDoor()
     {
-        isOpen = !isOpen;
+        isOpen = true;
     }
 }
