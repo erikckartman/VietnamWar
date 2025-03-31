@@ -8909,6 +8909,10 @@ MonoBehaviour:
   - text: It looks like I can get through the ruins through this car.
     duration: 5
     showOnce: 1
+  - text: Lana's house is very similar to our house, they must have been built at
+      the same time
+    duration: 5
+    showOnce: 1
 --- !u!114 &888273064
 MonoBehaviour:
   m_ObjectHideFlags: 0

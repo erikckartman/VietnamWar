@@ -28,6 +28,6 @@ MonoBehaviour:
     you my house key with this letter, and when you come over, I\u2019ll give you
     yours back.</br>  <b>See you soon! Yours, Lana</b>"
   pickupSound: {fileID: 8300000, guid: 0993a9045f56eb143a596b3127838d5a, type: 3}
-  thoughIndex: 0
+  thoughIndex: 11
   taskChanger: null
   isTaskChanged: 1
