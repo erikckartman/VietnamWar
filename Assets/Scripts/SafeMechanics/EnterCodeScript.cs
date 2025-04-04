@@ -56,6 +56,7 @@ public class EnterCodeScript : MonoBehaviour
     public void CodePanelVisibility(bool isActive)
     {
         enterCodeUI.SetActive(isActive);
+        UpdateDisplay();
         Cursor.visible = isActive;
         gameController.canMove = !isActive;
         if (isActive)
