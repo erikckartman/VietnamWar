@@ -98,7 +98,8 @@ public class IntroScript : MonoBehaviour
         audioSource2.volume = 0f;
 
         controller.canMove = true;
-        Destroy(intro);
+        Destroy(mainText.gameObject);
+        intro.SetActive(false);
 
         progressSaveSystem.UpdateProgress();
         thoughs.ShowThought(0);
@@ -112,7 +113,13 @@ public class IntroScript : MonoBehaviour
 
     private void ContinueGame()
     {
-        Destroy(intro);
+        Color color = intro.GetComponent<Image>().color;
+        color.a = 0f;
+        intro.GetComponent<Image>().color = color;
+
+        Destroy(mainText.gameObject);
+        intro.SetActive(false);
+
         controller.canMove = true;
         changeQuest.questList.SetActive(true);
     }

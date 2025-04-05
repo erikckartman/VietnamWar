@@ -3633,6 +3633,81 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!1 &337016566
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 337016567}
+  - component: {fileID: 337016569}
+  - component: {fileID: 337016568}
+  m_Layer: 5
+  m_Name: BlackScreen
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &337016567
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 337016566}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 495499996}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 17.203918, y: -5.336426}
+  m_SizeDelta: {x: 34.399895, y: 60.74156}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &337016568
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 337016566}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0, g: 0, b: 0, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 0}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &337016569
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 337016566}
+  m_CullTransparentMesh: 1
 --- !u!64 &338496599
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -5168,8 +5243,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 495499996}
-  - component: {fileID: 495500000}
-  - component: {fileID: 495499999}
   - component: {fileID: 495499998}
   m_Layer: 5
   m_Name: Intro
@@ -5190,6 +5263,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 337016567}
   - {fileID: 475160401}
   m_Father: {fileID: 232649359}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -5294,44 +5368,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &495499999
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 495499995}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 1}
-  m_RaycastTarget: 1
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_Sprite: {fileID: 0}
-  m_Type: 0
-  m_PreserveAspect: 0
-  m_FillCenter: 1
-  m_FillMethod: 4
-  m_FillAmount: 1
-  m_FillClockwise: 1
-  m_FillOrigin: 0
-  m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
---- !u!222 &495500000
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 495499995}
-  m_CullTransparentMesh: 1
 --- !u!1 &498648772
 GameObject:
   m_ObjectHideFlags: 0
@@ -8742,10 +8778,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   controller: {fileID: 1348748165}
   changeQuest: {fileID: 888273062}
-  intro: {fileID: 495499995}
+  intro: {fileID: 337016566}
   thoughs: {fileID: 888273063}
   progressSaveSystem: {fileID: 2021925251}
-  image: {fileID: 495499999}
+  image: {fileID: 337016568}
   audioSource1: {fileID: 495499998}
   audioSource2: {fileID: 888273060}
   mainText: {fileID: 475160402}
@@ -13493,7 +13529,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   changeQuest: {fileID: 888273062}
-  items: []
+  items:
+  - {fileID: 11400000, guid: 05500b0a619d34b44bb64a26b8ec326c, type: 2}
   activeItem: {fileID: 0}
   maxInventorySize: 16
   pickupAudio: {fileID: 1348748171}
@@ -23002,6 +23039,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 1348748164}
   nextPoint: {fileID: 1681628634}
+  blackScreen: {fileID: 337016568}
 --- !u!33 &2210192938271469041
 MeshFilter:
   m_ObjectHideFlags: 0
