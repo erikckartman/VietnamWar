@@ -21,7 +21,25 @@ public class IntroScript : MonoBehaviour
 
     private void Start()
     {
-        StartCoroutine(GoToGame());
+        bool isItLoads = PlayerPrefs.GetInt("LoadGame", 0) == 1;
+
+        if (isItLoads)
+        {
+            progressSaveSystem.LoadProgress();
+
+            if (progressSaveSystem.currentProgress > 0)
+            {
+                ContinueGame();
+            }
+            else
+            {
+                StartCoroutine(GoToGame());
+            }
+        }
+        else
+        {
+            StartCoroutine(GoToGame());
+        }
     }
 
     private IEnumerator FadeText(Text text, string newText, float fadeInDuration, float fadeOutDuration, float waitBeforeFadeIn)

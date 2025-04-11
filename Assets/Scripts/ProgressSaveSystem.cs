@@ -20,24 +20,17 @@ public class ProgressSaveSystem : MonoBehaviour
     [SerializeField] private ChangeQuest changeQuest;
     [SerializeField] private List<Items> allItems = new List<Items>();
     [SerializeField] private List<ItemColliderWithPlayer> allInteracts = new List<ItemColliderWithPlayer>();
+    [SerializeField] private List<SafeInteractions> allInteracts2 = new List<SafeInteractions>();
     public int currentProgress = 0;
     [SerializeField] private GameObject player;
     [SerializeField] private Inventory inventory;
     
     [SerializeField] private string savePath;
-    public static bool isLoadGame = false;
+    private bool isLoadGame = false;
 
     private void Awake()
     {
         savePath = Path.Combine(Application.persistentDataPath, "savegame.json");
-    }
-    private void Start()
-    {
-        if (isLoadGame)
-        {
-            LoadProgress();
-            isLoadGame = false;
-        }
     }
     public void UpdateProgress()
     {
@@ -95,6 +88,14 @@ public class ProgressSaveSystem : MonoBehaviour
                 if (i < allInteracts.Count)
                 {
                     allInteracts[i].qteCompleted = data.completedTasks[i];
+                }
+            }
+
+            for (int i = 0; i < data.completedTasks.Count; i++)
+            {
+                if (i < allInteracts2.Count)
+                {
+                    allInteracts2[i].onInteractionCompleted = data.completedTasks[i];
                 }
             }
 

@@ -29,7 +29,7 @@ public class MenuScript : MonoBehaviour
     {
         load.SetActive(true);
 
-        ProgressSaveSystem.isLoadGame = loading;
+        PlayerPrefs.SetInt("LoadGame", loading ? 1 : 0);
 
         PlayerPrefs.SetFloat("MasterVolume", master.value);
         PlayerPrefs.SetFloat("SFXVolume", sfx.value);
