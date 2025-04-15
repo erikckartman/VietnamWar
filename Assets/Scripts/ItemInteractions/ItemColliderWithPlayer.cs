@@ -23,7 +23,7 @@ public class ItemColliderWithPlayer : MonoBehaviour
     [SerializeField] private Items requiredItem;
     [SerializeField] private UnityEvent onQTEcomplete;
     [SerializeField] private UnityEvent onDontHavingItem;
-    [HideInInspector] public bool qteCompleted;
+    public bool qteCompleted;
 
     [SerializeField] private float distCol;
     [SerializeField] private Text alert;

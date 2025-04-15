@@ -23,6 +23,7 @@ public class InventoryUI : MonoBehaviour
     [SerializeField] private GameObject listSprite;
     [SerializeField] private GameObject listText;
     [SerializeField] public bool openInventor = false;
+    [SerializeField] private GameObject numPanel;
     private bool listWatch = false;
 
     [Header("Active item elements")]
@@ -71,7 +72,7 @@ public class InventoryUI : MonoBehaviour
         {
             if (inventory.activeItem.listText != "null")
             {
-                if (Input.GetMouseButtonDown(0) && !openInventor)
+                if (Input.GetMouseButtonDown(0) && !openInventor && !numPanel.activeInHierarchy)
                 {
                     listWatch = !listWatch;
                     ShowList();

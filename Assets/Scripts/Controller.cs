@@ -27,6 +27,13 @@ public class GameController : MonoBehaviour
             MovePlayer();
             RotateView();
         }
+        else
+        {
+            if (walkSound.isPlaying)
+            {
+                walkSound.Stop();
+            }
+        }
     }
 
     private void MovePlayer()

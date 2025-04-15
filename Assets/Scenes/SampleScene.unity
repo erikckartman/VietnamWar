@@ -8867,6 +8867,7 @@ MonoBehaviour:
   listSprite: {fileID: 609464863}
   listText: {fileID: 1315812142}
   openInventor: 0
+  numPanel: {fileID: 1566768837}
   AOpanel: {fileID: 202721703}
   controller: {fileID: 1348748165}
   itemSO:
@@ -11918,7 +11919,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  distCol: 4
+  distCol: 1
   enterCodeScript: {fileID: 888273066}
 --- !u!1 &1133517960 stripped
 GameObject:
@@ -13759,8 +13760,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   changeQuest: {fileID: 888273062}
-  items:
-  - {fileID: 11400000, guid: 05500b0a619d34b44bb64a26b8ec326c, type: 2}
+  items: []
   activeItem: {fileID: 0}
   maxInventorySize: 16
   pickupAudio: {fileID: 1348748171}
