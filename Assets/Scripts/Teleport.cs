@@ -11,7 +11,8 @@ public class Teleport : MonoBehaviour
 
     public void GoThroughCar()
     {
-        StartCoroutine(TeleportPlayer());
+        //StartCoroutine(TeleportPlayer());
+        player.position = nextPoint.position;
     }
 
     private IEnumerator TeleportPlayer()

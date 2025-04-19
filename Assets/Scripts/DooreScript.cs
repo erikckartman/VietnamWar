@@ -6,6 +6,7 @@ public class DooreScript : MonoBehaviour
 {
     [SerializeField] private float openAngle = 90f;
     [SerializeField] private float openingSpeed = 2f;
+    private ItemColliderWithPlayer itemColliderWithPlayer;
 
     private bool isOpen = false;
     private Quaternion closedRotation;
@@ -13,8 +14,15 @@ public class DooreScript : MonoBehaviour
 
     private void Start()
     {
+        itemColliderWithPlayer = GetComponent<ItemColliderWithPlayer>();
+
         closedRotation = transform.rotation;
         openRotation = Quaternion.Euler(transform.eulerAngles + new Vector3(0, openAngle, 0));
+
+        if(itemColliderWithPlayer != null)
+        {
+            Invoke(nameof(LoadGame), 1f);
+        }
     }
 
     private void Update()
@@ -31,5 +39,13 @@ public class DooreScript : MonoBehaviour
     public void OpenCloseDoor()
     {
         isOpen = true;
+    }
+
+    private void LoadGame()
+    {
+        if (itemColliderWithPlayer.qteCompleted)
+        {
+            transform.rotation = openRotation;
+        }
     }
 }

@@ -28,6 +28,8 @@ public class ProgressSaveSystem : MonoBehaviour
     [SerializeField] private string savePath;
     private bool isLoadGame = false;
 
+    private Dictionary<int, GameObject> itemObjects = new Dictionary<int, GameObject>();
+
     private void Awake()
     {
         savePath = Path.Combine(Application.persistentDataPath, "savegame.json");

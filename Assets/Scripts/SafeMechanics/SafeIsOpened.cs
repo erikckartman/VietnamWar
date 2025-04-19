@@ -10,6 +10,18 @@ public class SafeIsOpened : MonoBehaviour
     private Quaternion targetRotation;
     [SerializeField] private float openSpeed = 5f;
     [SerializeField] private GameObject safeDoor;
+    private SafeInteractions safeInteractions;
+
+    private void Start()
+    {
+        safeInteractions = GetComponent<SafeInteractions>();
+
+        if(safeInteractions != null)
+        {
+            Invoke(nameof(LoadGame), 1f);
+        }
+    }
+
     private void Update()
     {
         if(!isOpening) return;
@@ -27,5 +39,14 @@ public class SafeIsOpened : MonoBehaviour
         objectToTake.GetComponent<Collider>().enabled = true;
         objectToTake.GetComponent<Rigidbody>().useGravity = true;
         isOpening = true;
+    }
+
+    private void LoadGame()
+    {
+        if (safeInteractions.onInteractionCompleted)
+        {
+            targetRotation = Quaternion.Euler(safeDoor.transform.rotation.eulerAngles.x, safeDoor.transform.rotation.eulerAngles.y + 135, safeDoor.transform.rotation.eulerAngles.z);
+            safeDoor.transform.rotation = targetRotation;
+        }
     }
 }

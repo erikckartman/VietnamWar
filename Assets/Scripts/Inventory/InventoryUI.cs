@@ -182,4 +182,9 @@ public class InventoryUI : MonoBehaviour
         listSprite.SetActive(listWatch);
         listText.SetActive(listWatch);
     }
+
+    public void CheckButtonWork()
+    {
+        Debug.Log("Button works");
+    }
 }

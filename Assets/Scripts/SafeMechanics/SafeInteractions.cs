@@ -11,6 +11,7 @@ public class SafeInteractions : MonoBehaviour
     [SerializeField] private UnityEvent onQTEcomplete;
     [SerializeField] private float distCol;
     [SerializeField] private EnterCodeScript enterCodeScript;
+    [SerializeField] private int requiredProgress;
 
     private void Update()
     {

@@ -46,6 +46,7 @@ public class DoorFallScript : MonoBehaviour
         if (itemColliderWithPlayer.qteCompleted)
         {
             isFalling = true;
+            transform.rotation = targetRotation;
         }
     }
 }
