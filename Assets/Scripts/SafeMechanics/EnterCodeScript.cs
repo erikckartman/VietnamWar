@@ -22,6 +22,16 @@ public class EnterCodeScript : MonoBehaviour
         }
     }
 
+    private void Update()
+    {
+        if(!enterCodeUI.activeSelf) return;
+
+        if(Input.GetKeyDown(KeyCode.Escape))
+        {
+            CodePanelVisibility(false);
+        }
+    }
+
     public void DeleteLastDigit()
     {
         if (inputCode.Length > 0)

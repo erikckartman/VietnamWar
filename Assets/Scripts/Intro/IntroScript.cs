@@ -138,6 +138,9 @@ public class IntroScript : MonoBehaviour
         Destroy(mainText.gameObject);
         intro.SetActive(false);
 
+        audioSource1.Stop();
+        audioSource2.Stop();
+
         controller.canMove = true;
         changeQuest.questList.SetActive(true);
     }

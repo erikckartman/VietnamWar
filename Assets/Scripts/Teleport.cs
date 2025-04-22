@@ -11,12 +11,12 @@ public class Teleport : MonoBehaviour
 
     public void GoThroughCar()
     {
-        //StartCoroutine(TeleportPlayer());
-        player.position = nextPoint.position;
+        StartCoroutine(TeleportPlayer());
     }
 
     private IEnumerator TeleportPlayer()
     {
+        player.gameObject.GetComponent<GameController>().canMove = false;
         blackScreen.gameObject.SetActive(true);
         yield return StartCoroutine(FadeImageTo(1f, 2f));
 
@@ -24,6 +24,8 @@ public class Teleport : MonoBehaviour
         player.position = nextPoint.position;
 
         yield return StartCoroutine(FadeImageTo(0f, 2f));
+        player.gameObject.GetComponent<GameController>().canMove = true;
+        blackScreen.gameObject.SetActive(false);
     }
 
     IEnumerator FadeImageTo(float targetAlpha, float duration)

@@ -24,12 +24,14 @@ public class InventoryUI : MonoBehaviour
     [SerializeField] private GameObject listText;
     [SerializeField] public bool openInventor = false;
     [SerializeField] private GameObject numPanel;
+    
     private bool listWatch = false;
 
     [Header("Active item elements")]
     [SerializeField] private GameObject AOpanel;
 
     [SerializeField] private GameController controller;
+    [SerializeField] private GameObject pinCodeMenu;
 
     [SerializeField] private Items[] itemSO;
 
@@ -48,7 +50,7 @@ public class InventoryUI : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyUp(KeyCode.Q) && !listWatch && !openInventor && controller.canMove && !pauseMenu.isPause)
+        if (Input.GetKeyUp(KeyCode.Q) && !listWatch && !openInventor && controller.canMove && !pauseMenu.isPause && !pinCodeMenu.activeInHierarchy)
         {
             openInventor = !inventoryUI.activeSelf;
             inventoryUI.SetActive(openInventor);
@@ -58,21 +60,24 @@ public class InventoryUI : MonoBehaviour
             controller.canMove = !openInventor;
         }
 
-        if(openInventor && !pauseMenu.isPause && Input.GetKeyUp(KeyCode.Escape))
+        if(openInventor && !pauseMenu.isPause)
         {
-            openInventor = false;
-            inventoryUI.SetActive(openInventor);
+            if (Input.GetKeyUp(KeyCode.Escape))
+            {
+                openInventor = false;
+                inventoryUI.SetActive(openInventor);
 
-            Cursor.lockState = openInventor ? CursorLockMode.None : CursorLockMode.Locked;
-            Cursor.visible = openInventor;
-            controller.canMove = !openInventor;
+                Cursor.lockState = openInventor ? CursorLockMode.None : CursorLockMode.Locked;
+                Cursor.visible = openInventor;
+                controller.canMove = !openInventor;
+            }
         }
 
         if(inventory.activeItem != null)
         {
             if (inventory.activeItem.listText != "null")
             {
-                if (Input.GetMouseButtonDown(0) && !openInventor && !numPanel.activeInHierarchy)
+                if (Input.GetMouseButtonDown(0) && !openInventor && !numPanel.activeInHierarchy && controller.canMove)
                 {
                     listWatch = !listWatch;
                     ShowList();
