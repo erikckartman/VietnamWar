@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemName: Car key
   itemID: 2
-  itemIcon: {fileID: 21300000, guid: d4903997c08abc443bbbdc63ea1ecd44, type: 3}
+  itemIcon: {fileID: 21300000, guid: 0475365340f1c844f82a9e210b8dfefb, type: 3}
   itemObject: {fileID: 5404896165836608282, guid: 575a685e05e67604bbdf6b9f681731ef, type: 3}
   onSceneScale: {x: 0.01, y: 0.01, z: 0.01}
   listText: null

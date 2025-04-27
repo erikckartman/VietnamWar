@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 public class InventoryUI : MonoBehaviour
@@ -24,6 +25,7 @@ public class InventoryUI : MonoBehaviour
     [SerializeField] private GameObject listText;
     [SerializeField] public bool openInventor = false;
     [SerializeField] private GameObject numPanel;
+    [SerializeField] private Text itemNameUI;
     
     private bool listWatch = false;
 
@@ -145,6 +147,7 @@ public class InventoryUI : MonoBehaviour
                         Image slotImage = iconTransform.GetComponent<Image>();
                         slotImage.sprite = item.itemIcon;
                         slotImage.enabled = true;
+
                         Button button = iconTransform.GetComponent<Button>();
                         if (button != null)
                         {
@@ -166,8 +169,9 @@ public class InventoryUI : MonoBehaviour
                                     inventory.SelectItem(item);
                                     AOpanel.GetComponent<Image>().sprite = inventory.activeItem.itemIcon;
                                 }
-
                             });
+
+                            AddHoverEvents(iconTransform.gameObject, item.itemName);
                         }
                     }
                     index++;
@@ -178,6 +182,45 @@ public class InventoryUI : MonoBehaviour
                 }
             }
         }
+    }
+
+    private void AddHoverEvents(GameObject iconObject, string itemName)
+    {
+        EventTrigger trigger = iconObject.GetComponent<EventTrigger>();
+        if (trigger == null)
+        {
+            trigger = iconObject.AddComponent<EventTrigger>();
+        }
+        trigger.triggers.Clear();
+
+        // При наведенні
+        EventTrigger.Entry entryEnter = new EventTrigger.Entry();
+        entryEnter.eventID = EventTriggerType.PointerEnter;
+        entryEnter.callback.AddListener((eventData) =>
+        {
+            if (itemNameUI != null)
+            {
+                itemNameUI.text = itemName;
+                itemNameUI.gameObject.SetActive(true);
+
+                RectTransform iconRect = iconObject.GetComponent<RectTransform>();
+                Vector3 worldPos = iconRect.position;
+                itemNameUI.transform.position = worldPos + new Vector3(0, -50f, 0);
+            }
+        });
+        trigger.triggers.Add(entryEnter);
+
+        // При виході
+        EventTrigger.Entry entryExit = new EventTrigger.Entry();
+        entryExit.eventID = EventTriggerType.PointerExit;
+        entryExit.callback.AddListener((eventData) =>
+        {
+            if (itemNameUI != null)
+            {
+                itemNameUI.gameObject.SetActive(false);
+            }
+        });
+        trigger.triggers.Add(entryExit);
     }
 
     private void ShowList()

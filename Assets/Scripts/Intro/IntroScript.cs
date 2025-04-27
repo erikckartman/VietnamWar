@@ -14,8 +14,6 @@ public class IntroScript : MonoBehaviour
 
     [Header("Intro elements")]
     [SerializeField] private Image image;
-    [SerializeField] private AudioSource audioSource1;
-    [SerializeField] private AudioSource audioSource2;
     [SerializeField] private Text mainText;
     private float fadeDuration = 5f;
 
@@ -91,29 +89,19 @@ public class IntroScript : MonoBehaviour
         float elapsedTime = 0f;
         Color originalColor = image.color;
 
-        if(audioSource1 == null || audioSource2 == null) yield break;
-
-        float originalVolume1 = audioSource1.volume;
-        float originalVolume2 = audioSource2.volume;
 
         while (elapsedTime < fadeDuration)
         {
             elapsedTime += Time.deltaTime;
 
             float alpha = Mathf.Lerp(originalColor.a, 0f, elapsedTime / fadeDuration);
-            float volume1 = Mathf.Lerp(originalVolume1, 0f, elapsedTime / fadeDuration);
-            float volume2 = Mathf.Lerp(originalVolume2, 0f, elapsedTime / fadeDuration);
 
             image.color = new Color(originalColor.r, originalColor.g, originalColor.b, alpha);
-            audioSource1.volume = volume1;
-            audioSource2.volume = volume2;
 
             yield return null;
         }
 
         image.color = new Color(originalColor.r, originalColor.g, originalColor.b, 0f);
-        audioSource1.volume = 0f;
-        audioSource2.volume = 0f;
 
         controller.canMove = true;
         Destroy(mainText.gameObject);
@@ -137,9 +125,6 @@ public class IntroScript : MonoBehaviour
 
         Destroy(mainText.gameObject);
         intro.SetActive(false);
-
-        audioSource1.Stop();
-        audioSource2.Stop();
 
         controller.canMove = true;
         changeQuest.questList.SetActive(true);
