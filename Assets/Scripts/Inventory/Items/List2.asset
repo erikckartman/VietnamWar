@@ -14,14 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemName: List2
   itemID: 5
-  itemIcon: {fileID: 21300000, guid: 9350f6d5cdcdeab49899e1581a6701a2, type: 3}
+  itemIcon: {fileID: 21300000, guid: f8980dd6c7ce7464a864e233e511415a, type: 3}
   itemObject: {fileID: 1656752168958837365, guid: e791951f8c49ec647a7e00f451e5d265, type: 3}
   onSceneScale: {x: 1, y: 1, z: 1}
-  listText: "Hi Mom,  You wouldn\u2019t believe it, but I got the flu right before
-    my trip to see you. Don\u2019t worry, I\u2019m still coming back to our city,
-    but I\u2019ll need to go to the hospital as soon as I arrive. So I suggest we
-    meet near the hospital before heading to the caf\xE9, if that\u2019s okay.  With
-    love, Isha"
+  listText: ' '
   pickupSound: {fileID: 8300000, guid: 0993a9045f56eb143a596b3127838d5a, type: 3}
   thoughIndex: 9
   taskChanger: Explore the ruins

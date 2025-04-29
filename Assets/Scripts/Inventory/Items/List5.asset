@@ -14,19 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemName: List5
   itemID: 9
-  itemIcon: {fileID: 21300000, guid: 9350f6d5cdcdeab49899e1581a6701a2, type: 3}
+  itemIcon: {fileID: 21300000, guid: a9054f65020d9eb439b072dbe3b7063d, type: 3}
   itemObject: {fileID: 169145989474178090, guid: ebc1429cfb921d746836ebc1861c61e7, type: 3}
   onSceneScale: {x: 1, y: 1, z: 1}
-  listText: "<b>Sofia, my dear, hello!</b> <br> Congratulations on your daughter\u2019s
-    long-awaited arrival! I hope you have a wonderful time together.  I need to ask
-    you for a favor. Could you stop by the pharmacy and buy some sedatives for my
-    husband? Lately, he\u2019s been acting like a complete paranoid. One of his friends
-    at the front told him that our city would be bombed, and you should see him now\u2026
-    He boarded up all the windows, started buying random apartments, and\u2014worst
-    of all\u2014my things have started disappearing! Including my letter and the
-    second key to your house.  Please, my dear, get the medicine. I\u2019m sending
-    you my house key with this letter, and when you come over, I\u2019ll give you
-    yours back.</br>  <b>See you soon! Yours, Lana</b>"
+  listText: ' '
   pickupSound: {fileID: 8300000, guid: 0993a9045f56eb143a596b3127838d5a, type: 3}
   thoughIndex: 11
   taskChanger: null

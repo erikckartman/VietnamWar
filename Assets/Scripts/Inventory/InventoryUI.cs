@@ -23,6 +23,8 @@ public class InventoryUI : MonoBehaviour
     [Header("List objects")]
     [SerializeField] private GameObject listSprite;
     [SerializeField] private GameObject listText;
+    [SerializeField] private AudioClip listSound;
+    [SerializeField] private AudioSource audioSource;
     [SerializeField] public bool openInventor = false;
     [SerializeField] private GameObject numPanel;
     [SerializeField] private Text itemNameUI;
@@ -225,6 +227,8 @@ public class InventoryUI : MonoBehaviour
 
     private void ShowList()
     {
+        audioSource.clip = listSound;
+        audioSource.Play();
         listSprite.GetComponent<Image>().sprite = inventory.activeItem.itemIcon;
         listText.GetComponent<TextMeshProUGUI>().text = inventory.activeItem.listText;
         listSprite.SetActive(listWatch);

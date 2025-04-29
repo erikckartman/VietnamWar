@@ -14,15 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemName: OptionalList
   itemID: 6
-  itemIcon: {fileID: 21300000, guid: 8bcbe6f0f51ecd24e8123d4c5e9f43ee, type: 3}
+  itemIcon: {fileID: 21300000, guid: f9649be5f1ec6484b829221452ce230f, type: 3}
   itemObject: {fileID: 169145989474178090, guid: 04c821f86a8a44047b192cea208cba6a, type: 3}
   onSceneScale: {x: 1, y: 1, z: 1}
-  listText: "Dear Isha, it\u2019s Bon, we haven\u2019t chatted in a while. How its
-    on the south, is everything\u2019s fine? Did hear about the bombings yesterday?
-    Grandparents were left homeless because of them, and there some worries that
-    our town is going to be bombed soon, but i don\u2019t believe in that, we\u2019ve
-    done nothing wrong, why should they bomb us. Anyway, mom and dad are worrying
-    about you maybe you should come and visit us. With love, Bon"
+  listText: ' '
   pickupSound: {fileID: 8300000, guid: 0993a9045f56eb143a596b3127838d5a, type: 3}
   thoughIndex: 0
   taskChanger: null

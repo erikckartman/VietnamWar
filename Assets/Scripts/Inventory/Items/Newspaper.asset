@@ -14,17 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemName: Newspaper
   itemID: 7
-  itemIcon: {fileID: 21300000, guid: cbb37e9a8e0c01a4f91c4521a92e05f9, type: 3}
+  itemIcon: {fileID: 21300000, guid: f839af3fb3ff048429213860db7b6dca, type: 3}
   itemObject: {fileID: 169145989474178090, guid: 2cb12dec8bdb9c94abc96741ebe30657, type: 3}
   onSceneScale: {x: 1, y: 1, z: 1}
-  listText: "<b>The Northern Herald</b> <br><b>March 12, 1969</b> <br><br><b>A Night
-    of Destruction: American and Southern Vietnamese Forces Bombard Peaceful Districts</b><br>On
-    March 10, North Vietnam's tranquil neighborhoods were bombed by American and
-    Southern Vietnamese forces, leaving many homes destroyed and families devastated.
-    <br><b>Cities Under Siege</b> Several cities faced heavy bombardment: <br>\u2022
-    <b>Hanoi:</b> Residential buildings turned to rubble.  <br>\u2022 <b>Haiphong:</b>
-    Industrial sector heavily damaged.  <br>\u2022 <b>Thai Nguyen:</b> Civilian areas
-    suffered high casualties."
+  listText: ' '
   pickupSound: {fileID: 8300000, guid: 0993a9045f56eb143a596b3127838d5a, type: 3}
   thoughIndex: 2
   taskChanger: null
