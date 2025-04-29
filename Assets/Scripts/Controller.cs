@@ -4,18 +4,26 @@ using UnityEngine;
 
 public class GameController : MonoBehaviour
 {
-    // Movement
-    private float moveSpeed = 5f;
-    private float lookSensitivity = 2f;
-    [SerializeField] private AudioSource walkSound;
-    public bool canMove;
+    [Header("Movement")]
+    public float moveSpeed = 5f;
+    public float gravity = -9.81f;
+    private Vector3 velocity;
+    public bool canMove = true;
 
-    //Looking
+    [Header("Audio")]
+    [SerializeField] private AudioSource walkSound;
+
+    [Header("Camera Look")]
     [SerializeField] private Transform cameraTransform;
+    public float lookSensitivity = 2f;
     private float xRotation = 0f;
+
+    private CharacterController characterController;
 
     private void Start()
     {
+        characterController = GetComponent<CharacterController>();
+
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
     }
@@ -41,9 +49,22 @@ public class GameController : MonoBehaviour
         float moveX = Input.GetAxis("Horizontal");
         float moveZ = Input.GetAxis("Vertical");
 
-        Vector3 move = transform.right * moveX * moveSpeed * Time.deltaTime + transform.forward * moveZ * moveSpeed * Time.deltaTime;
-        transform.position += move;
+        Vector3 move = transform.right * moveX + transform.forward * moveZ;
+        characterController.Move(move * moveSpeed * Time.deltaTime);
 
+        // Apply gravity
+        if (!characterController.isGrounded)
+        {
+            velocity.y += gravity * Time.deltaTime;
+        }
+        else
+        {
+            velocity.y = -2f; // to keep grounded
+        }
+
+        characterController.Move(velocity * Time.deltaTime);
+
+        // Walk sound logic
         if (moveX == 0 && moveZ == 0)
         {
             if (walkSound.isPlaying)
@@ -53,7 +74,7 @@ public class GameController : MonoBehaviour
         }
         else
         {
-            if (!walkSound.isPlaying) 
+            if (!walkSound.isPlaying)
             {
                 walkSound.Play();
             }
@@ -70,5 +91,5 @@ public class GameController : MonoBehaviour
 
         cameraTransform.localRotation = Quaternion.Euler(xRotation, 0f, 0f);
         transform.Rotate(Vector3.up * mouseX);
-   } 
+    }
 }
