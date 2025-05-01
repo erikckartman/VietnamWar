@@ -34,6 +34,13 @@ public class EnterCodeScript : MonoBehaviour
 
     public void DeleteLastDigit()
     {
+        if (codeField.text == "ERR")
+        {
+            inputCode = "";
+            UpdateDisplay();
+            return;
+        }
+
         if (inputCode.Length > 0)
         {
             inputCode = inputCode.Substring(0, inputCode.Length - 1);
@@ -46,14 +53,14 @@ public class EnterCodeScript : MonoBehaviour
         if (inputCode == requiredCode)
         {
             Debug.Log("Code is right");
-            inputCode = null;
+            inputCode = "";
             UpdateDisplay();
             CodePanelVisibility(false);
             CodeSucces?.Invoke();
         }
         else
         {
-            inputCode = null;
+            inputCode = "";
             codeField.text = "ERR";
         }
     }

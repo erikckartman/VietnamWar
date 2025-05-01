@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b959451e2aa2c7d4f88966149589a378, type: 3}
+  m_Name: List6
+  m_EditorClassIdentifier: 
+  itemName: List6
+  itemID: 9
+  itemIcon: {fileID: 21300000, guid: 4c1a86e466a2f7442ae631ffbf17856b, type: 3}
+  itemObject: {fileID: 169145989474178090, guid: 58a0ff7399ec5314ca751e7d8d78aae9, type: 3}
+  onSceneScale: {x: 1, y: 1, z: 1}
+  listText: ' '
+  pickupSound: {fileID: 8300000, guid: 0993a9045f56eb143a596b3127838d5a, type: 3}
+  thoughIndex: 11
+  taskChanger: null
+  isTaskChanged: 1
