@@ -2967,7 +2967,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 1
+  m_UiScaleMode: 0
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 1920, y: 1080}
@@ -6747,6 +6747,32 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: d642999b4e320ca40ac88e30ce971bce, type: 3}
   m_PrefabInstance: {fileID: 593052429}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &608323542 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -1279387752044226889, guid: c7175b4121773ed4ba812a66ab423b65, type: 3}
+  m_PrefabInstance: {fileID: 854057245}
+  m_PrefabAsset: {fileID: 0}
+--- !u!65 &608323546
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 608323542}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.7801872, y: 0.8392456, z: 1.5501231}
+  m_Center: {x: 0.22218178, y: 0.55761975, z: -0.005058765}
 --- !u!1 &609464863
 GameObject:
   m_ObjectHideFlags: 0
@@ -7178,6 +7204,7 @@ MonoBehaviour:
           m_StringArgument: Find something to break this door
           m_BoolArgument: 0
         m_CallState: 2
+  gameController: {fileID: 1348748165}
   qteCompleted: 0
   distCol: 1
   alert: {fileID: 542909668}
@@ -9356,6 +9383,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  gameController: {fileID: 1348748165}
   qteCompleted: 0
   distCol: 1
   alert: {fileID: 542909668}
@@ -9886,6 +9914,32 @@ Light:
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!1 &833374532 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -4792659931534092728, guid: c7175b4121773ed4ba812a66ab423b65, type: 3}
+  m_PrefabInstance: {fileID: 854057245}
+  m_PrefabAsset: {fileID: 0}
+--- !u!65 &833374536
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 833374532}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.5664546, y: 1.0137292, z: 0.5645084}
+  m_Center: {x: 0.021749837, y: 0.025729714, z: 0.02917902}
 --- !u!1001 &854057245
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9954,6 +10008,9 @@ PrefabInstance:
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: -4792659931534092728, guid: c7175b4121773ed4ba812a66ab423b65, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 833374536}
     - targetCorrespondingSourceObject: {fileID: 2857283626571802687, guid: c7175b4121773ed4ba812a66ab423b65, type: 3}
       insertIndex: -1
       addedObject: {fileID: 12794821}
@@ -9969,6 +10026,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 8351596813735254713, guid: c7175b4121773ed4ba812a66ab423b65, type: 3}
       insertIndex: -1
       addedObject: {fileID: 757778007}
+    - targetCorrespondingSourceObject: {fileID: -1279387752044226889, guid: c7175b4121773ed4ba812a66ab423b65, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 608323546}
   m_SourcePrefab: {fileID: 100100000, guid: c7175b4121773ed4ba812a66ab423b65, type: 3}
 --- !u!4 &854057246 stripped
 Transform:
@@ -13622,6 +13682,7 @@ MonoBehaviour:
   distCol: 1
   enterCodeScript: {fileID: 888273066}
   requiredProgress: 0
+  gameController: {fileID: 1348748165}
 --- !u!1 &1105246179
 GameObject:
   m_ObjectHideFlags: 0
@@ -25432,6 +25493,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: b5156d1cc22d0bc4c851f92acd63bfb5, type: 2}
     - target: {fileID: 2867886393631932575, guid: 31dc6d5f050799843bde3e72c0f2019d, type: 3}
+      propertyPath: gameController
+      value: 
+      objectReference: {fileID: 1348748165}
+    - target: {fileID: 2867886393631932575, guid: 31dc6d5f050799843bde3e72c0f2019d, type: 3}
       propertyPath: requiredProgress
       value: 1
       objectReference: {fileID: 0}
@@ -28080,6 +28145,7 @@ MonoBehaviour:
           m_StringArgument: Find a key
           m_BoolArgument: 0
         m_CallState: 2
+  gameController: {fileID: 1348748165}
   qteCompleted: 0
   distCol: 3
   alert: {fileID: 542909668}
@@ -29830,6 +29896,7 @@ MonoBehaviour:
   onDontHavingItem:
     m_PersistentCalls:
       m_Calls: []
+  gameController: {fileID: 1348748165}
   qteCompleted: 0
   distCol: 2
   alert: {fileID: 542909668}

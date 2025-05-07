@@ -23,6 +23,7 @@ public class ItemColliderWithPlayer : MonoBehaviour
     [SerializeField] private Items requiredItem;
     [SerializeField] private UnityEvent onQTEcomplete;
     [SerializeField] private UnityEvent onDontHavingItem;
+    [SerializeField] private GameController gameController;
     public bool qteCompleted;
 
     [SerializeField] private float distCol;
@@ -44,7 +45,7 @@ public class ItemColliderWithPlayer : MonoBehaviour
 
     private void Update()
     {
-        if (qteCompleted) return;
+        if (qteCompleted || !gameController.canMove) return;
 
         Collider[] hitColliders = Physics.OverlapSphere(transform.position, distCol);
         foreach (Collider collider in hitColliders)

@@ -12,10 +12,11 @@ public class SafeInteractions : MonoBehaviour
     [SerializeField] private float distCol;
     [SerializeField] private EnterCodeScript enterCodeScript;
     [SerializeField] private int requiredProgress;
+    [SerializeField] private GameController gameController;
 
     private void Update()
     {
-        if (onInteractionCompleted) return;
+        if (onInteractionCompleted && !gameController.canMove) return;
 
         Collider[] hitColliders = Physics.OverlapSphere(transform.position, distCol);
         foreach (Collider collider in hitColliders)
