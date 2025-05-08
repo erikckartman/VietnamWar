@@ -6,8 +6,11 @@ using UnityEngine.UI;
 public class Teleport : MonoBehaviour
 {
     [SerializeField] private Transform player;
-    [SerializeField] private Transform nextPoint;
+    public Transform nextPoint;
     [SerializeField] private Image blackScreen;
+    
+    [HideInInspector] public bool firstComing = false;
+    [SerializeField] private UpdateInteractParametres updateInteractParametres;
 
     public void GoThroughCar()
     {
@@ -26,6 +29,12 @@ public class Teleport : MonoBehaviour
         yield return StartCoroutine(FadeImageTo(0f, 2f));
         player.gameObject.GetComponent<GameController>().canMove = true;
         blackScreen.gameObject.SetActive(false);
+
+        if (!firstComing)
+        {
+            updateInteractParametres.ChangeVariables();
+        }
+        firstComing = true;
     }
 
     IEnumerator FadeImageTo(float targetAlpha, float duration)

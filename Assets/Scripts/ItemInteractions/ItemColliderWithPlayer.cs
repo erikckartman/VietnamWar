@@ -20,7 +20,7 @@ public class ItemColliderWithPlayer : MonoBehaviour
 
     [SerializeField] private QTE qte;
     [SerializeField] private ChangeQuest changeQuest;
-    [SerializeField] private Items requiredItem;
+    public Items requiredItem;
     [SerializeField] private UnityEvent onQTEcomplete;
     [SerializeField] private UnityEvent onDontHavingItem;
     [SerializeField] private GameController gameController;
