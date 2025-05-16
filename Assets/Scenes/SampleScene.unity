@@ -10490,6 +10490,12 @@ MonoBehaviour:
       the same time
     duration: 5
     showOnce: 1
+  - text: That is not how I remember Lana's house...
+    duration: 5
+    showOnce: 1
+  - text: Poor Lee, I can't believe such thing happened to him...
+    duration: 5
+    showOnce: 1
 --- !u!114 &888273064
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13814,15 +13820,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2004740561078447267, guid: 5b1a4df8cbcf65f4a80ace88486bf707, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -24.615257
+      value: -23.48
       objectReference: {fileID: 0}
     - target: {fileID: 2004740561078447267, guid: 5b1a4df8cbcf65f4a80ace88486bf707, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 5.351
+      value: 6.47
       objectReference: {fileID: 0}
     - target: {fileID: 2004740561078447267, guid: 5b1a4df8cbcf65f4a80ace88486bf707, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 8.020106
+      value: 10.23
       objectReference: {fileID: 0}
     - target: {fileID: 2004740561078447267, guid: 5b1a4df8cbcf65f4a80ace88486bf707, type: 3}
       propertyPath: m_LocalRotation.w
@@ -19185,7 +19191,7 @@ MonoBehaviour:
     m_Font: {fileID: 12800000, guid: d01f46fb2dcd1264ab79995f7e387b74, type: 3}
     m_FontSize: 35
     m_FontStyle: 0
-    m_BestFit: 0
+    m_BestFit: 1
     m_MinSize: 3
     m_MaxSize: 50
     m_Alignment: 4
@@ -28136,7 +28142,7 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: Find mother's bag
+          m_StringArgument: Explore the Pharmacy
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 888273064}
@@ -29939,6 +29945,18 @@ MonoBehaviour:
           m_ObjectArgument: {fileID: 8300000, guid: fee6914710610f64592df40da3736c43, type: 3}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
           m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 888273063}
+        m_TargetAssemblyTypeName: Thoughs, Assembly-CSharp
+        m_MethodName: ShowThought
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 12
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
