@@ -195,7 +195,6 @@ public class InventoryUI : MonoBehaviour
         }
         trigger.triggers.Clear();
 
-        // При наведенні
         EventTrigger.Entry entryEnter = new EventTrigger.Entry();
         entryEnter.eventID = EventTriggerType.PointerEnter;
         entryEnter.callback.AddListener((eventData) =>
@@ -212,7 +211,6 @@ public class InventoryUI : MonoBehaviour
         });
         trigger.triggers.Add(entryEnter);
 
-        // При виході
         EventTrigger.Entry entryExit = new EventTrigger.Entry();
         entryExit.eventID = EventTriggerType.PointerExit;
         entryExit.callback.AddListener((eventData) =>
@@ -229,8 +227,7 @@ public class InventoryUI : MonoBehaviour
     {
         audioSource.clip = listSound;
         audioSource.Play();
-        listSprite.GetComponent<Image>().sprite = inventory.activeItem.itemIcon;
-        listText.GetComponent<TextMeshProUGUI>().text = inventory.activeItem.listText;
+        listSprite.GetComponent<Image>().sprite = inventory.activeItem.listTexture;
         listSprite.SetActive(listWatch);
         listText.SetActive(listWatch);
     }

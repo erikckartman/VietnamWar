@@ -9,6 +9,7 @@ public class Items : ScriptableObject
     public string itemName;
     public int itemID;
     public Sprite itemIcon;
+    public Sprite listTexture;
     public GameObject itemObject;
     public Vector3 onSceneScale;
     public string listText;

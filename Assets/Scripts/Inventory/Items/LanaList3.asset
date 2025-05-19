@@ -14,7 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemName: LanaList3
   itemID: 13
-  itemIcon: {fileID: 21300000, guid: 34c2c6c1c45e7f248b6f963d0c4839dd, type: 3}
+  itemIcon: {fileID: 21300000, guid: a1df86e3636436847934bd0a50c61f3e, type: 3}
+  listTexture: {fileID: 21300000, guid: 34c2c6c1c45e7f248b6f963d0c4839dd, type: 3}
   itemObject: {fileID: 1656752168958837365, guid: 5b1a4df8cbcf65f4a80ace88486bf707, type: 3}
   onSceneScale: {x: 1, y: 1, z: 1}
   listText: ' '

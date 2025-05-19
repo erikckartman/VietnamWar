@@ -14,7 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemName: Newspaper2
   itemID: 9
-  itemIcon: {fileID: 21300000, guid: afd8cbe6ba1c691489a09daf66999c2e, type: 3}
+  itemIcon: {fileID: 21300000, guid: 0f64fda5d3aab6c48b143b766193f83e, type: 3}
+  listTexture: {fileID: 21300000, guid: afd8cbe6ba1c691489a09daf66999c2e, type: 3}
   itemObject: {fileID: 169145989474178090, guid: 58a0ff7399ec5314ca751e7d8d78aae9, type: 3}
   onSceneScale: {x: 1, y: 1, z: 1}
   listText: ' '
