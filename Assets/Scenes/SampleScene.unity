@@ -14205,8 +14205,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 227.53151, y: 4.5591186e-10, z: 181.6902}
-  m_Center: {x: 0.05513, y: 0.9090345, z: -1.2579011}
+  m_Size: {x: 227.53151, y: 1.4, z: 181.6902}
+  m_Center: {x: 0.0551265, y: 0.28240162, z: -1.2578988}
 --- !u!64 &1176597783
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -16343,6 +16343,7 @@ MonoBehaviour:
   maxInventorySize: 16
   pickupAudio: {fileID: 1348748171}
   interactUI: {fileID: 2008862923}
+  progressSaveSystem: {fileID: 2021925251}
 --- !u!114 &1348748168
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -24320,6 +24321,8 @@ MonoBehaviour:
   - {fileID: 1104248258}
   allInteracts3: []
   onSceneObjects: []
+  itemsToSpawn:
+  - {fileID: 11400000, guid: 0d86df65858950a4ab1553af82f669e9, type: 2}
   currentProgress: 0
   player: {fileID: 1348748159}
   inventory: {fileID: 1348748167}

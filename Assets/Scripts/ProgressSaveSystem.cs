@@ -10,12 +10,14 @@ public class SaveData
 {
     public int progress;
     public Vector3 playerPosition;
+    public Quaternion playerRotation;
     public string taskToSave;
     public List<int> inventoryItems = new List<int>();
     public List<bool> completedTasks = new List<bool>();
     public List<OnSceneObject> sceneObjects = new List<OnSceneObject>();
 }
 
+[System.Serializable]
 public class OnSceneObject
 {
     public int itemID;
@@ -32,6 +34,7 @@ public class ProgressSaveSystem : MonoBehaviour
     [SerializeField] private List<SafeInteractions> allInteracts2 = new List<SafeInteractions>();
     [SerializeField] private List<UpdateInteractParametres> allInteracts3 = new List<UpdateInteractParametres>();
     public List<ItemPickup> onSceneObjects = new List<ItemPickup>();
+    [SerializeField] private List<Items> itemsToSpawn = new List<Items>();
     public int currentProgress = 0;
     [SerializeField] private GameObject player;
     [SerializeField] private Inventory inventory;
@@ -44,8 +47,8 @@ public class ProgressSaveSystem : MonoBehaviour
     private void Awake()
     {
         savePath = Path.Combine(Application.persistentDataPath, "savegame.json");
-        //ItemPickup[] pickupableObjects = FindObjectsOfType<ItemPickup>();
-        //onSceneObjects = pickupableObjects.ToList();
+        ItemPickup[] pickupableObjects = FindObjectsOfType<ItemPickup>();
+        onSceneObjects = pickupableObjects.ToList();
     }
     public void UpdateProgress()
     {
@@ -58,6 +61,7 @@ public class ProgressSaveSystem : MonoBehaviour
         {
             progress = currentProgress,
             playerPosition = player.transform.position,
+            playerRotation = player.transform.rotation,
             taskToSave = changeQuest.currentTask
         };
 
@@ -71,14 +75,17 @@ public class ProgressSaveSystem : MonoBehaviour
             data.completedTasks.Add(interact.qteCompleted);
         }
 
-        foreach(var onSceneObject in onSceneObjects)
+        for (int i = 0; i < onSceneObjects.Count; i++)
         {
-            OnSceneObject objectToAdd = new OnSceneObject
+            ItemPickup obj = onSceneObjects[i];
+            if (obj != null)
             {
-                itemID = onSceneObject.item.itemID,
-                position = onSceneObject.transform.position
-            };
-            data.sceneObjects.Add(objectToAdd);
+                data.sceneObjects.Add(new OnSceneObject
+                {
+                    itemID = obj.item.itemID,
+                    position = obj.transform.position
+                });
+            }
         }
 
         string json = JsonUtility.ToJson(data, true);
@@ -95,9 +102,12 @@ public class ProgressSaveSystem : MonoBehaviour
             SaveData data = JsonUtility.FromJson<SaveData>(json);
 
             currentProgress = data.progress;
-            
+
+            changeQuest.ChangeTask(data.taskToSave);
+
             player.GetComponent<CharacterController>().enabled = false;
             player.transform.position = data.playerPosition;
+            player.transform.rotation = data.playerRotation;
 
             inventory.items.Clear();
             foreach (var itemData in data.inventoryItems)
@@ -130,21 +140,41 @@ public class ProgressSaveSystem : MonoBehaviour
                 }
             }
 
-            changeQuest.ChangeTask(data.taskToSave);
-
-            foreach (ItemPickup sceneObject in onSceneObjects)
+            for (int i = onSceneObjects.Count - 1; i >= 0; i--)
             {
+                ItemPickup sceneObject = onSceneObjects[i];
+
                 if (data.inventoryItems.Contains(sceneObject.item.itemID))
                 {
                     Destroy(sceneObject.gameObject);
+                    onSceneObjects.RemoveAt(i);
                 }
-                else
+            }
+
+            foreach (Items item in itemsToSpawn)
+            {
+                OnSceneObject getObjectData = data.sceneObjects.Find(obj => obj.itemID == item.itemID);
+
+                if (getObjectData != null)
                 {
-                    OnSceneObject getObjectData = data.sceneObjects.Find(obj => obj.itemID == sceneObject.item.itemID);
-                    if (getObjectData != null)
+                    if (item.itemObject != null)
                     {
-                        sceneObject.transform.position = getObjectData.position;
+                        GameObject spawnedObject = Instantiate(item.itemObject, getObjectData.position, Quaternion.identity);
+                        spawnedObject.transform.localScale = item.onSceneScale;
+                        if (spawnedObject.GetComponent<ItemPickup>() != null)
+                        {
+                            onSceneObjects.Add(spawnedObject.GetComponent<ItemPickup>());
+                        }
                     }
+                }
+            }
+
+            foreach (ItemPickup sceneObject in onSceneObjects)
+            {
+                OnSceneObject getObjectData = data.sceneObjects.Find(obj => obj.itemID == sceneObject.item.itemID);
+                if (getObjectData != null)
+                {
+                    sceneObject.transform.position = getObjectData.position;
                 }
             }
 
@@ -165,5 +195,21 @@ public class ProgressSaveSystem : MonoBehaviour
     private ItemColliderWithPlayer FindInteract(bool isDone)
     {
         return allInteracts.Find(c => c.qteCompleted == isDone);
+    }
+
+    public void AddItemToList(GameObject itemToSave)
+    {
+        onSceneObjects.Add(itemToSave.GetComponent<ItemPickup>());
+    }
+
+    public void RemoveItemFromList(ItemPickup itemToDontSave)
+    {
+        if (itemToDontSave != null)
+        {
+            if (onSceneObjects.Contains(itemToDontSave))
+            {
+                onSceneObjects.Remove(itemToDontSave);
+            }
+        }
     }
 }
