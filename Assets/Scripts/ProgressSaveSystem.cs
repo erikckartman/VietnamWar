@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.IO;
 using UnityEngine.SceneManagement;
+using System.Linq;
+using Unity.VisualScripting;
 
 public class SaveData
 {
@@ -11,6 +13,13 @@ public class SaveData
     public string taskToSave;
     public List<int> inventoryItems = new List<int>();
     public List<bool> completedTasks = new List<bool>();
+    public List<OnSceneObject> sceneObjects = new List<OnSceneObject>();
+}
+
+public class OnSceneObject
+{
+    public int itemID;
+    public Vector3 position;
 }
 
 public class ProgressSaveSystem : MonoBehaviour
@@ -21,6 +30,8 @@ public class ProgressSaveSystem : MonoBehaviour
     [SerializeField] private List<Items> allItems = new List<Items>();
     [SerializeField] private List<ItemColliderWithPlayer> allInteracts = new List<ItemColliderWithPlayer>();
     [SerializeField] private List<SafeInteractions> allInteracts2 = new List<SafeInteractions>();
+    [SerializeField] private List<UpdateInteractParametres> allInteracts3 = new List<UpdateInteractParametres>();
+    public List<ItemPickup> onSceneObjects = new List<ItemPickup>();
     public int currentProgress = 0;
     [SerializeField] private GameObject player;
     [SerializeField] private Inventory inventory;
@@ -33,6 +44,8 @@ public class ProgressSaveSystem : MonoBehaviour
     private void Awake()
     {
         savePath = Path.Combine(Application.persistentDataPath, "savegame.json");
+        //ItemPickup[] pickupableObjects = FindObjectsOfType<ItemPickup>();
+        //onSceneObjects = pickupableObjects.ToList();
     }
     public void UpdateProgress()
     {
@@ -58,6 +71,16 @@ public class ProgressSaveSystem : MonoBehaviour
             data.completedTasks.Add(interact.qteCompleted);
         }
 
+        foreach(var onSceneObject in onSceneObjects)
+        {
+            OnSceneObject objectToAdd = new OnSceneObject
+            {
+                itemID = onSceneObject.item.itemID,
+                position = onSceneObject.transform.position
+            };
+            data.sceneObjects.Add(objectToAdd);
+        }
+
         string json = JsonUtility.ToJson(data, true);
         File.WriteAllText(savePath, json);
         Debug.Log("Progress saved: " + savePath);
@@ -72,8 +95,9 @@ public class ProgressSaveSystem : MonoBehaviour
             SaveData data = JsonUtility.FromJson<SaveData>(json);
 
             currentProgress = data.progress;
+            
+            player.GetComponent<CharacterController>().enabled = false;
             player.transform.position = data.playerPosition;
-            changeQuest.ChangeTask(data.taskToSave);
 
             inventory.items.Clear();
             foreach (var itemData in data.inventoryItems)
@@ -90,6 +114,11 @@ public class ProgressSaveSystem : MonoBehaviour
                 if (i < allInteracts.Count)
                 {
                     allInteracts[i].qteCompleted = data.completedTasks[i];
+
+                    if (allInteracts[i].GetComponent<ItemColliderWithPlayer>().qteCompleted && allInteracts[i].GetComponent<UpdateInteractParametres>() != null)
+                    {
+                        allInteracts[i].GetComponent<UpdateInteractParametres>().ChangeVariables();
+                    }
                 }
             }
 
@@ -101,7 +130,26 @@ public class ProgressSaveSystem : MonoBehaviour
                 }
             }
 
+            changeQuest.ChangeTask(data.taskToSave);
+
+            foreach (ItemPickup sceneObject in onSceneObjects)
+            {
+                if (data.inventoryItems.Contains(sceneObject.item.itemID))
+                {
+                    Destroy(sceneObject.gameObject);
+                }
+                else
+                {
+                    OnSceneObject getObjectData = data.sceneObjects.Find(obj => obj.itemID == sceneObject.item.itemID);
+                    if (getObjectData != null)
+                    {
+                        sceneObject.transform.position = getObjectData.position;
+                    }
+                }
+            }
+
             Debug.Log("Progress loaded");
+            player.GetComponent<CharacterController>().enabled = true;
         }
         else
         {

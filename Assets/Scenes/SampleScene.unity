@@ -19223,7 +19223,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 169145989474178090, guid: 2cb12dec8bdb9c94abc96741ebe30657, type: 3}
       propertyPath: m_StaticEditorFlags
-      value: 65
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4730790288787263775, guid: 2cb12dec8bdb9c94abc96741ebe30657, type: 3}
       propertyPath: m_LocalPosition.x
@@ -24305,6 +24305,11 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 5a971184b553d814ab4a033f1367ed6c, type: 2}
   - {fileID: 11400000, guid: afe74f0e3aa61984fb6518864f001d5d, type: 2}
   - {fileID: 11400000, guid: bdb1961d61e3cca4d8d2d95766582a06, type: 2}
+  - {fileID: 11400000, guid: 70004821439db7f4d9838d72b2d7cff3, type: 2}
+  - {fileID: 11400000, guid: 9b863a1a9bc10da49ae650db16f74498, type: 2}
+  - {fileID: 11400000, guid: 747624374153c0e45ba90cc7f82cc721, type: 2}
+  - {fileID: 11400000, guid: 0f31f33d3a31eda4aa8b79626abca080, type: 2}
+  - {fileID: 11400000, guid: 63aa9c21e7b750d42a39fc1f6a4f2db3, type: 2}
   allInteracts:
   - {fileID: 2114021662}
   - {fileID: 641762973}
@@ -24313,6 +24318,8 @@ MonoBehaviour:
   - {fileID: 807995450}
   allInteracts2:
   - {fileID: 1104248258}
+  allInteracts3: []
+  onSceneObjects: []
   currentProgress: 0
   player: {fileID: 1348748159}
   inventory: {fileID: 1348748167}
@@ -25223,7 +25230,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1656752168958837365, guid: 1b6331071ea8a024a82ac7a90089b048, type: 3}
       propertyPath: m_StaticEditorFlags
-      value: 65
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2004740561078447267, guid: 1b6331071ea8a024a82ac7a90089b048, type: 3}
       propertyPath: m_LocalScale.x
