@@ -16,6 +16,7 @@ public class Inventory : MonoBehaviour
 
     private bool haveInteractableObjects = false;
     [SerializeField] private GameObject interactUI;
+    [SerializeField] private ProgressSaveSystem progressSaveSystem;
 
     private void Update()
     {
@@ -60,6 +61,7 @@ public class Inventory : MonoBehaviour
                     itemPickup.item.isTaskChanged = true;
                 }
 
+                progressSaveSystem.RemoveItemFromList(itemPickup);
                 AddItem(itemPickup.item);
                 Destroy(hit.gameObject);
                 break;
@@ -89,6 +91,7 @@ public class Inventory : MonoBehaviour
         {
             GameObject removeItem = Instantiate(itemToRemove.itemObject, transform.position, Quaternion.identity);
             removeItem.transform.localScale = itemToRemove.onSceneScale;
+            progressSaveSystem.AddItemToList(removeItem);
             items.Remove(itemToRemove);
 
             if(activeItem == itemToRemove)

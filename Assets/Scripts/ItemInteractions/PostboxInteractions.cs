@@ -13,5 +13,6 @@ public class PostboxInteractions : MonoBehaviour
         progressSaveSystem.UpdateProgress();
         GameObject itemThrow = Instantiate(itemToTake.itemObject, transform.position + spawnPos, Quaternion.identity);
         itemThrow.transform.localScale = itemToTake.onSceneScale;
+        progressSaveSystem.AddItemToList(itemThrow);
     }
 }
