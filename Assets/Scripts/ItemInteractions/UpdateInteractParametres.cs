@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class UpdateInteractParametres : MonoBehaviour
 {
-    private bool isUpdated = false;
+    [HideInInspector] public bool isUpdated = false;
     private ItemColliderWithPlayer itemColliderWithPlayer;
     private ChangeQuest changeQuest;
     private Teleport teleport;

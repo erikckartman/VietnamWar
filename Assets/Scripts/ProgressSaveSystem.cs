@@ -14,6 +14,8 @@ public class SaveData
     public string taskToSave;
     public List<int> inventoryItems = new List<int>();
     public List<bool> completedTasks = new List<bool>();
+    public List<bool> completedTasks2 = new List<bool>();
+    public List<bool> updatedTasks = new List<bool>();
     public List<OnSceneObject> sceneObjects = new List<OnSceneObject>();
 }
 
@@ -75,6 +77,16 @@ public class ProgressSaveSystem : MonoBehaviour
             data.completedTasks.Add(interact.qteCompleted);
         }
 
+        foreach (var interact in allInteracts2)
+        {
+            data.completedTasks2.Add(interact.onInteractionCompleted);
+        }
+
+        foreach(var update in allInteracts3)
+        {
+            data.updatedTasks.Add(update.isUpdated);
+        }
+
         for (int i = 0; i < onSceneObjects.Count; i++)
         {
             ItemPickup obj = onSceneObjects[i];
@@ -125,18 +137,19 @@ public class ProgressSaveSystem : MonoBehaviour
                 {
                     allInteracts[i].qteCompleted = data.completedTasks[i];
 
-                    if (allInteracts[i].GetComponent<ItemColliderWithPlayer>().qteCompleted && allInteracts[i].GetComponent<UpdateInteractParametres>() != null)
+                    if (allInteracts[i].GetComponent<UpdateInteractParametres>() != null)
                     {
+                        if(!allInteracts[i].GetComponent<ItemColliderWithPlayer>().qteCompleted && allInteracts[i].GetComponent<UpdateInteractParametres>().isUpdated)
                         allInteracts[i].GetComponent<UpdateInteractParametres>().ChangeVariables();
                     }
                 }
             }
 
-            for (int i = 0; i < data.completedTasks.Count; i++)
+            for (int i = 0; i < data.completedTasks2.Count; i++)
             {
                 if (i < allInteracts2.Count)
                 {
-                    allInteracts2[i].onInteractionCompleted = data.completedTasks[i];
+                    allInteracts2[i].onInteractionCompleted = data.completedTasks2[i];
                 }
             }
 

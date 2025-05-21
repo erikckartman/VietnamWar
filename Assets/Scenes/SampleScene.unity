@@ -24319,7 +24319,8 @@ MonoBehaviour:
   - {fileID: 807995450}
   allInteracts2:
   - {fileID: 1104248258}
-  allInteracts3: []
+  allInteracts3:
+  - {fileID: 2185375811468303430}
   onSceneObjects: []
   itemsToSpawn:
   - {fileID: 11400000, guid: 0d86df65858950a4ab1553af82f669e9, type: 2}
@@ -28250,6 +28251,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 21d31712b8116d04c9e8e062dd959f68, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isUpdated: 0
   newRequiredItem: {fileID: 11400000, guid: bdb1961d61e3cca4d8d2d95766582a06, type: 2}
   newSpawnPos: {fileID: 1707578272}
   newTask: 
