@@ -15,8 +15,9 @@ public class SaveData
     public List<int> inventoryItems = new List<int>();
     public List<bool> completedTasks = new List<bool>();
     public List<bool> completedTasks2 = new List<bool>();
-    public List<bool> updatedTasks = new List<bool>();
+    public bool updatedTask;
     public List<OnSceneObject> sceneObjects = new List<OnSceneObject>();
+    public int mapPartIndex;
 }
 
 [System.Serializable]
@@ -34,7 +35,7 @@ public class ProgressSaveSystem : MonoBehaviour
     [SerializeField] private List<Items> allItems = new List<Items>();
     [SerializeField] private List<ItemColliderWithPlayer> allInteracts = new List<ItemColliderWithPlayer>();
     [SerializeField] private List<SafeInteractions> allInteracts2 = new List<SafeInteractions>();
-    [SerializeField] private List<UpdateInteractParametres> allInteracts3 = new List<UpdateInteractParametres>();
+    [SerializeField] private UpdateInteractParametres allInteracts3;
     public List<ItemPickup> onSceneObjects = new List<ItemPickup>();
     [SerializeField] private List<Items> itemsToSpawn = new List<Items>();
     public int currentProgress = 0;
@@ -64,7 +65,8 @@ public class ProgressSaveSystem : MonoBehaviour
             progress = currentProgress,
             playerPosition = player.transform.position,
             playerRotation = player.transform.rotation,
-            taskToSave = changeQuest.currentTask
+            taskToSave = changeQuest.currentTask,
+            updatedTask = allInteracts3.isUpdated
         };
 
         foreach (var item in inventory.items)
@@ -82,11 +84,6 @@ public class ProgressSaveSystem : MonoBehaviour
             data.completedTasks2.Add(interact.onInteractionCompleted);
         }
 
-        foreach(var update in allInteracts3)
-        {
-            data.updatedTasks.Add(update.isUpdated);
-        }
-
         for (int i = 0; i < onSceneObjects.Count; i++)
         {
             ItemPickup obj = onSceneObjects[i];
@@ -99,6 +96,8 @@ public class ProgressSaveSystem : MonoBehaviour
                 });
             }
         }
+        
+        data.mapPartIndex = allInteracts3.currentMapPart;
 
         string json = JsonUtility.ToJson(data, true);
         File.WriteAllText(savePath, json);
@@ -131,16 +130,21 @@ public class ProgressSaveSystem : MonoBehaviour
                 }
             }
 
+            allInteracts3.isUpdated = data.updatedTask;
+
             for (int i = 0; i < data.completedTasks.Count; i++)
             {
                 if (i < allInteracts.Count)
                 {
                     allInteracts[i].qteCompleted = data.completedTasks[i];
 
-                    if (allInteracts[i].GetComponent<UpdateInteractParametres>() != null)
+                    if (allInteracts[i].gameObject.GetComponent<UpdateInteractParametres>() != null)
                     {
-                        if(!allInteracts[i].GetComponent<ItemColliderWithPlayer>().qteCompleted && allInteracts[i].GetComponent<UpdateInteractParametres>().isUpdated)
-                        allInteracts[i].GetComponent<UpdateInteractParametres>().ChangeVariables();
+                        if (allInteracts[i].gameObject.GetComponent<UpdateInteractParametres>().isUpdated)
+                        {
+                            allInteracts[i].gameObject.GetComponent<UpdateInteractParametres>().currentMapPart = data.mapPartIndex;
+                            allInteracts[i].gameObject.GetComponent<UpdateInteractParametres>().ChangeVariables(false);
+                        }
                     }
                 }
             }

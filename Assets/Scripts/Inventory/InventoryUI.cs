@@ -202,11 +202,6 @@ public class InventoryUI : MonoBehaviour
             if (itemNameUI != null)
             {
                 itemNameUI.text = itemName;
-                itemNameUI.gameObject.SetActive(true);
-
-                RectTransform iconRect = iconObject.GetComponent<RectTransform>();
-                Vector3 worldPos = iconRect.position;
-                itemNameUI.transform.position = worldPos + new Vector3(0, -50f, 0);
             }
         });
         trigger.triggers.Add(entryEnter);
@@ -217,7 +212,7 @@ public class InventoryUI : MonoBehaviour
         {
             if (itemNameUI != null)
             {
-                itemNameUI.gameObject.SetActive(false);
+                itemNameUI.text = "";
             }
         });
         trigger.triggers.Add(entryExit);

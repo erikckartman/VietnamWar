@@ -5,7 +5,7 @@ using UnityEngine;
 public class SafeIsOpened : MonoBehaviour
 {
     [SerializeField] private List<Animator> animator = new List<Animator>();
-    [SerializeField] private GameObject objectToTake;
+    [SerializeField] private GameObject[] objectsToTake;
     private bool isOpening = false;
     private Quaternion targetRotation;
     [SerializeField] private float openSpeed = 5f;
@@ -36,8 +36,13 @@ public class SafeIsOpened : MonoBehaviour
     public void OpenSafe()
     {
         targetRotation = Quaternion.Euler(safeDoor.transform.rotation.eulerAngles.x, safeDoor.transform.rotation.eulerAngles.y + 135, safeDoor.transform.rotation.eulerAngles.z);
-        objectToTake.GetComponent<Collider>().enabled = true;
-        objectToTake.GetComponent<Rigidbody>().useGravity = true;
+        
+        foreach(var objectToTake in objectsToTake)
+        {
+            objectToTake.GetComponent<Collider>().enabled = true;
+            objectToTake.GetComponent<Rigidbody>().useGravity = true;
+        }
+        
         isOpening = true;
     }
 

@@ -55,17 +55,7 @@ public class ItemColliderWithPlayer : MonoBehaviour
                 if (requiredItem == null)
                 {
                     gameObject.tag = "Untagged";
-                    qte.OnQTESuccess.RemoveAllListeners();
-                    qte.OnQTESuccess.AddListener(HandleQteSuccess);
-
-                    if (currentQTE == QTEmode.QTEstandart)
-                    {
-                        qte.StartQTE();
-                    }
-                    else if (currentQTE == QTEmode.QTErapidpress)
-                    {
-                        qte.StartQTE2();
-                    }
+                    HandleQteSuccess();
                 }
                 else
                 {

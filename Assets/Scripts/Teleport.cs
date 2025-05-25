@@ -9,16 +9,18 @@ public class Teleport : MonoBehaviour
     public Transform nextPoint;
     [SerializeField] private Image blackScreen;
     
-    [HideInInspector] public bool firstComing = false;
     [SerializeField] private UpdateInteractParametres updateInteractParametres;
+    private bool isGoing = false;
 
     public void GoThroughCar()
     {
+        if(isGoing) return;
         StartCoroutine(TeleportPlayer());
     }
 
     private IEnumerator TeleportPlayer()
     {
+        isGoing = true;
         player.gameObject.GetComponent<GameController>().canMove = false;
         blackScreen.gameObject.SetActive(true);
         yield return StartCoroutine(FadeImageTo(1f, 2f));
@@ -29,12 +31,9 @@ public class Teleport : MonoBehaviour
         yield return StartCoroutine(FadeImageTo(0f, 2f));
         player.gameObject.GetComponent<GameController>().canMove = true;
         blackScreen.gameObject.SetActive(false);
-
-        if (!firstComing)
-        {
-            updateInteractParametres.ChangeVariables();
-        }
-        firstComing = true;
+                
+        updateInteractParametres.ChangeVariables(true);
+        isGoing = false;
     }
 
     IEnumerator FadeImageTo(float targetAlpha, float duration)
