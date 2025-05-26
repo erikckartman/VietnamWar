@@ -137,9 +137,16 @@ public class ProgressSaveSystem : MonoBehaviour
                 if (i < allInteracts.Count)
                 {
                     allInteracts[i].qteCompleted = data.completedTasks[i];
+                    Debug.Log($"[{i}] Setting qteCompleted = {data.completedTasks[i]} for object: {allInteracts[i].name} = {allInteracts[i].qteCompleted}");
+
+                    if (data.completedTasks[i] == true)
+                    {
+                        allInteracts[i].gameObject.tag = "Untagged";
+                    }
 
                     if (allInteracts[i].gameObject.GetComponent<UpdateInteractParametres>() != null)
                     {
+                        
                         if (allInteracts[i].gameObject.GetComponent<UpdateInteractParametres>().isUpdated)
                         {
                             allInteracts[i].gameObject.GetComponent<UpdateInteractParametres>().currentMapPart = data.mapPartIndex;

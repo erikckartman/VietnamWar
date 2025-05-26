@@ -16,7 +16,7 @@ public class SafeInteractions : MonoBehaviour
 
     private void Update()
     {
-        if (onInteractionCompleted && !gameController.canMove) return;
+        if (onInteractionCompleted || !gameController.canMove) return;
 
         Collider[] hitColliders = Physics.OverlapSphere(transform.position, distCol);
         foreach (Collider collider in hitColliders)

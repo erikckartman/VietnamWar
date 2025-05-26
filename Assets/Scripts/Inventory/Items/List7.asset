@@ -20,6 +20,6 @@ MonoBehaviour:
   onSceneScale: {x: 1, y: 1, z: 1}
   listText: ' '
   pickupSound: {fileID: 8300000, guid: 0993a9045f56eb143a596b3127838d5a, type: 3}
-  thoughIndex: 11
-  taskChanger: null
-  isTaskChanged: 1
+  thoughIndex: 0
+  taskChanger: Come back to blue house
+  isTaskChanged: 0

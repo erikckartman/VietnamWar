@@ -52,6 +52,17 @@ public class SafeIsOpened : MonoBehaviour
         {
             targetRotation = Quaternion.Euler(safeDoor.transform.rotation.eulerAngles.x, safeDoor.transform.rotation.eulerAngles.y + 135, safeDoor.transform.rotation.eulerAngles.z);
             safeDoor.transform.rotation = targetRotation;
+            if(objectsToTake.Length > 0)
+            {
+                for(int i = 0; i < objectsToTake.Length; i++)
+                {
+                    if(objectsToTake[i] != null)
+                    {
+                        objectsToTake[i].GetComponent<Collider>().enabled = true;
+                        objectsToTake[i].GetComponent<Rigidbody>().useGravity = true;
+                    }
+                }
+            }
         }
     }
 }

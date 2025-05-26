@@ -106,8 +106,9 @@ public class QTE : MonoBehaviour
         qteImage.gameObject.SetActive(active);
     }
 
-    public void StartQTE()
+    public void StartQTE(float durationCustom)
     {
+        qteDuration = durationCustom;
         TurnUI(true);
         qteSequence = new KeyCode[4] { RandomKey(), RandomKey(), RandomKey(), RandomKey() };
 

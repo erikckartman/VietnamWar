@@ -24,7 +24,8 @@ public class ItemColliderWithPlayer : MonoBehaviour
     [SerializeField] private UnityEvent onQTEcomplete;
     [SerializeField] private UnityEvent onDontHavingItem;
     [SerializeField] private GameController gameController;
-    public bool qteCompleted;
+    [SerializeField] private float customQteDuration = 3f;
+    public bool _qteCompleted;
 
     [SerializeField] private float distCol;
     [SerializeField] private Text alert;
@@ -32,14 +33,13 @@ public class ItemColliderWithPlayer : MonoBehaviour
 
     [SerializeField] private bool showAlert;
 
-    private void Start()
+    public bool qteCompleted
     {
-        if(progressSaveSystem != null)
+        get => _qteCompleted;
+        set
         {
-            if(progressSaveSystem.currentProgress > requiredProgress)
-            {
-                qteCompleted = true;
-            }
+            _qteCompleted = value;
+            Debug.Log($"{gameObject.name}: qteCompleted set to {value} from script {new System.Diagnostics.StackTrace().GetFrame(1).GetMethod().DeclaringType}");
         }
     }
 
@@ -69,7 +69,7 @@ public class ItemColliderWithPlayer : MonoBehaviour
                         
                         if(currentQTE == QTEmode.QTEstandart)
                         {
-                            qte.StartQTE();
+                            qte.StartQTE(customQteDuration);
                         }
                         else if(currentQTE == QTEmode.QTErapidpress)
                         {

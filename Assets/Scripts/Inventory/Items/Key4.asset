@@ -15,10 +15,11 @@ MonoBehaviour:
   itemName: Lana's home key
   itemID: 10
   itemIcon: {fileID: 21300000, guid: aae7a047c1876c24bb526efc21d1a27c, type: 3}
+  listTexture: {fileID: 0}
   itemObject: {fileID: 5404896165836608282, guid: 538442a321010e44599a0b88dea50e5d, type: 3}
   onSceneScale: {x: 0.01, y: 0.01, z: 0.01}
   listText: null
   pickupSound: {fileID: 8300000, guid: 8f943510de05ca9478bac01131da691c, type: 3}
   thoughIndex: 0
-  taskChanger: Find the safe
+  taskChanger: Find Lana's house
   isTaskChanged: 1
