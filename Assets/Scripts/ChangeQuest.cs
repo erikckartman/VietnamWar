@@ -3,8 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-
-
 public class ChangeQuest : MonoBehaviour
 { 
     public GameObject questList;
@@ -13,13 +11,25 @@ public class ChangeQuest : MonoBehaviour
     [SerializeField] private Thoughs thoughtsScript;
 
     [SerializeField] private Transform player;
-    private bool canStart = false;
-    private bool messageShown = false;
+    [HideInInspector] public bool pharmacyTaskDone = false;
+
 
     public void ChangeTask(string taskToWrite)
     {
-        currentTask = taskToWrite;
-        textQuest.text = currentTask;
+        if(taskToWrite == "Explore the Pharmacy")
+        {
+            if (pharmacyTaskDone) return;
+
+            currentTask = taskToWrite;
+            textQuest.text = currentTask;
+
+            pharmacyTaskDone = true;
+        }
+        else
+        {
+            currentTask = taskToWrite;
+            textQuest.text = currentTask;
+        }
     }
 
     public void EnableTask(ItemColliderWithPlayer script)

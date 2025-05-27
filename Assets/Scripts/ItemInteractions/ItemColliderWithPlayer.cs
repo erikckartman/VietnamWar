@@ -25,23 +25,13 @@ public class ItemColliderWithPlayer : MonoBehaviour
     [SerializeField] private UnityEvent onDontHavingItem;
     [SerializeField] private GameController gameController;
     [SerializeField] private float customQteDuration = 3f;
-    public bool _qteCompleted;
+    public bool qteCompleted;
 
     [SerializeField] private float distCol;
     [SerializeField] private Text alert;
     [SerializeField] private GameObject alertGO;
 
     [SerializeField] private bool showAlert;
-
-    public bool qteCompleted
-    {
-        get => _qteCompleted;
-        set
-        {
-            _qteCompleted = value;
-            Debug.Log($"{gameObject.name}: qteCompleted set to {value} from script {new System.Diagnostics.StackTrace().GetFrame(1).GetMethod().DeclaringType}");
-        }
-    }
 
     private void Update()
     {

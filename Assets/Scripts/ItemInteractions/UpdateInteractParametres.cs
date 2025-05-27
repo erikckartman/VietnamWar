@@ -6,17 +6,15 @@ public class UpdateInteractParametres : MonoBehaviour
 {
     public bool isUpdated = false;
     [SerializeField] private ItemColliderWithPlayer itemColliderWithPlayer;
-    [SerializeField] private ChangeQuest changeQuest;
     [SerializeField] private Teleport teleport;
 
     [SerializeField] private Items newRequiredItem;
-    [SerializeField] private string newTask;
 
     [Header("Map parts")]
     [SerializeField] private Transform moveToPart1;
     [SerializeField] private Transform moveToPart2;
 
-    public int currentMapPart = 1; //This var has to be only 1 or 2
+    [Range(1, 2)] public int currentMapPart = 1;
 
     public void ChangeVariables(bool withSwap)
     {
@@ -30,11 +28,6 @@ public class UpdateInteractParametres : MonoBehaviour
         itemColliderWithPlayer.qteCompleted = false;
 
         itemColliderWithPlayer.requiredItem = newRequiredItem;
-
-        if (newTask != null && newTask != "")
-        {
-            changeQuest.ChangeTask(newTask);
-        }
 
         isUpdated = true;
     }

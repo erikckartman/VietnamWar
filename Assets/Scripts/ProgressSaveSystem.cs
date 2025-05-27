@@ -5,6 +5,7 @@ using System.IO;
 using UnityEngine.SceneManagement;
 using System.Linq;
 using Unity.VisualScripting;
+using UnityEngine.UIElements;
 
 public class SaveData
 {
@@ -16,6 +17,7 @@ public class SaveData
     public List<bool> completedTasks = new List<bool>();
     public List<bool> completedTasks2 = new List<bool>();
     public bool updatedTask;
+    public bool pharmacyTask;
     public List<OnSceneObject> sceneObjects = new List<OnSceneObject>();
     public int mapPartIndex;
 }
@@ -66,7 +68,8 @@ public class ProgressSaveSystem : MonoBehaviour
             playerPosition = player.transform.position,
             playerRotation = player.transform.rotation,
             taskToSave = changeQuest.currentTask,
-            updatedTask = allInteracts3.isUpdated
+            updatedTask = allInteracts3.isUpdated,
+            pharmacyTask = changeQuest.pharmacyTaskDone
         };
 
         foreach (var item in inventory.items)
@@ -131,13 +134,13 @@ public class ProgressSaveSystem : MonoBehaviour
             }
 
             allInteracts3.isUpdated = data.updatedTask;
+            changeQuest.pharmacyTaskDone = data.pharmacyTask;
 
             for (int i = 0; i < data.completedTasks.Count; i++)
             {
                 if (i < allInteracts.Count)
                 {
                     allInteracts[i].qteCompleted = data.completedTasks[i];
-                    Debug.Log($"[{i}] Setting qteCompleted = {data.completedTasks[i]} for object: {allInteracts[i].name} = {allInteracts[i].qteCompleted}");
 
                     if (data.completedTasks[i] == true)
                     {
