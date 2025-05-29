@@ -68,6 +68,8 @@ public class ItemColliderWithPlayer : MonoBehaviour
                     }
                     else
                     {
+                        if(requiredItem == null) return;
+
                         Debug.Log($"You have to choose {requiredItem.itemName}");
                         if (showAlert)
                         {
