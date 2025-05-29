@@ -27,6 +27,8 @@ public class UpdateInteractParametres : MonoBehaviour
 
         itemColliderWithPlayer.qteCompleted = false;
 
+        gameObject.tag = "Interactable";
+
         itemColliderWithPlayer.requiredItem = newRequiredItem;
 
         isUpdated = true;
